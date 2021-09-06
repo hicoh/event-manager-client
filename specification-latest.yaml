@@ -1,0 +1,1132 @@
+openapi: 3.0.0
+info:
+  description: |
+    HighCohesion API
+    [https://highcohesion.co.uk](https://highcohesion.co.uk)
+  version: "1.0.0"
+  title: HighCohesion API
+  termsOfService: 'http://highcohesion.co.uk'
+  contact:
+    email: admin@highcohesion.com
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/HighCohesion/Public-Gateway/1.0.0
+
+  - description: HighCohesion API
+    url: 'https://api.highcohesion.com/v1'
+tags:
+  - name: Job
+    description: Operations about jobs
+  - name: Stream
+    description:  Operations about streams
+  - name: Event
+    description: Operations about events
+  - name: EventEntity
+    description: Operations about event entities
+  - name: Webhook
+    description: Operations about webhooks
+  - name: Organisation
+    description: Operations about organisations
+  - name: ApiKey
+    description: Operations about API Keys
+
+security:
+  - api_key: []
+
+
+paths:
+  /event_manager/job/{job_id}:
+    get:
+      tags:
+        - Job
+      summary: Get a job by job id
+      operationId: getJobById
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: job_id
+          in: path
+          description: The job id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sucessful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                ResourceNotFound:
+                  $ref: '#/components/examples/NotFound'
+  /event_manager/job:
+    get:
+      tags:
+        - Job
+      summary: Get a list of jobs by
+      operationId: getJobsBy
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: job_id
+          in: query
+          description: The job id
+          required: false
+          schema:
+            type: string
+        - name: stream_id
+          in: query
+          description: The stream id of the job
+          required: false
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: The job status
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobList'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                ResourceNotFound:
+                  $ref: '#/components/examples/NotFound'
+    post:
+      tags:
+        - Job
+      summary: Create a new job
+      operationId: createJob
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      responses:
+        202:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+
+      requestBody:
+        $ref: '#/components/requestBodies/Job'
+    patch:
+      tags:
+        - Job
+      summary: Update job
+      operationId: updateJob
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The fields to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateJobRequest"
+            examples:
+              UpdateStatusRequest:
+                $ref: "#/components/examples/UpdateStatusRequest"
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/job/replicate:
+    post:
+      tags:
+        - Job
+      summary: Replicate job
+      operationId: replicateJob
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ReplicateJob'
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/job/replicate/webhook/static:
+    post:
+      security: [ ]
+      tags:
+        - Webhook
+      summary: Replicate Static Webhook
+      operationId: replicateStaticWebhook
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: Job Data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplicateWebhook'
+      responses:
+        '202':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: '#/components/examples/SuccessfulAsyncResponse'
+  /event_manager/job/replicate/webhook/dynamic:
+    post:
+      security: [ ]
+      tags:
+        - Webhook
+      summary: Replicate Dynamic Webhook
+      operationId: replicateDynamicWebhook
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: Job Data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplicateWebhook'
+      responses:
+        '202':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: '#/components/examples/SuccessfulAsyncResponse'
+  /event_manager/job/schedule:
+    post:
+      tags:
+        - Job
+      summary: Create a job schedule
+      operationId: createJobSchedule
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/JobScheduleRequest'
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+
+  /event_manager/stream/schedule_configuration:
+    post:
+      tags:
+        - Stream
+      summary: Create a new Stream Schedule Configuration
+      operationId: createScheduleConfiguration
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ScheduleConfigurationRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduleConfiguration'
+              examples:
+                SuccessfulSyncResponse:
+                  $ref: "#/components/examples/ScheduleConfiguration"
+    patch:
+      tags:
+        - Stream
+      summary: Updates Stream Schedule Configuration option and active attributes.
+      operationId: updateScheduleConfigurationAttributes
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ScheduleConfigurationRequest'
+      responses:
+        '200':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatchSyncResponse'
+              examples:
+                SuccessfulPatchSyncResponse:
+                  $ref: '#/components/examples/SuccessfulPatchSyncResponse'
+  /event_manager/event/{event_id}:
+    get:
+      tags:
+        - Event
+      summary: Get an event by event id
+      operationId: getEventById
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: event_id
+          in: path
+          description: The event id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                ResourceNotFound:
+                  $ref: '#/components/examples/NotFound'
+  /event_manager/event:
+    get:
+      tags:
+        - Event
+      summary: Get a list of events by
+      operationId: getEventsBy
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: event_id
+          in: query
+          description: The event id
+          required: false
+          schema:
+            type: string
+        - name: job_id
+          in: query
+          description: The job id
+          required: false
+          schema:
+            type: string
+        - name: stream_id
+          in: query
+          description: The stream id
+          required: false
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: The status
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: The limit (limit=20 to get the first 20 events)
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: order by one specific field (orderBy=createdAt,desc, orderBy=status,asc)
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: the position of the first result to retrieve (offset=100)
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventList'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                ResourceNotFound:
+                  $ref: '#/components/examples/NotFound'
+    patch:
+      tags:
+        - Event
+      summary: Update Event
+      operationId: updateEvent
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The fields to update
+        required: true
+        content:
+          array:
+            schema:
+              $ref: "#/components/schemas/UpdateEventRequest"
+            examples:
+              UpdateStatusRequest:
+                $ref: "#/components/examples/UpdateEventRequest"
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/event/replicate:
+    post:
+      tags:
+        - Event
+      summary: Replicate Event
+      operationId: replicateEvent
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ReplicateEvent'
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/event/redrive:
+    post:
+      tags:
+        - Event
+      summary: Redrive Event
+      operationId: redriveEvent
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The event to redrive
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RedriveEventRequest"
+            examples:
+              RedriveEventRequest:
+                $ref: "#/components/examples/RedriveEventRequest"
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/event_entity:
+    patch:
+      tags:
+        - EventEntity
+      summary: Update Event Entity
+      operationId: updateEventEntity
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The fields to update
+        required: true
+        content:
+          array:
+            schema:
+              $ref: "#/components/schemas/UpdateEventEntityRequest"
+            examples:
+              UpdateStatusRequest:
+                $ref: "#/components/examples/UpdateEventEntityRequest"
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/webhook/static/{stream_id}/{access_token}:
+    post:
+      security: []
+      tags:
+        - Webhook
+      summary: Static Webhook
+      operationId: postStaticWebhook
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: "stream_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        - name: "access_token"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+          example: "1234567890"
+      requestBody:
+        description: Event Data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataJson'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DataXml'
+          application/csv:
+            schema:
+              $ref: '#/components/schemas/DataCsv'
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '202':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: '#/components/examples/SuccessfulAsyncResponse'
+  /event_manager/webhook/dynamic/{stream_id}/{access_token}:
+    post:
+      security: []
+      tags:
+        - Webhook
+      summary: Dynamic Webhook
+      operationId: postDynamicWebhook
+      parameters:
+        - name: Organisation-Id
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: "stream_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        - name: "access_token"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+          example: "1234567890"
+      requestBody:
+        description: Event Data
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataJson'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/DataXml'
+          application/csv:
+            schema:
+              $ref: '#/components/schemas/DataCsv'
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '202':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/organisation/{organisation_id}/index:
+    post:
+      security:
+        - admin_api_key: []
+      tags:
+        - Organisation
+      summary: Create the organisation tables
+      operationId: createOrganisationIndex
+      parameters:
+        - name: "organisation_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        '200':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulSyncResponse"
+  /event_manager/api_key/{organisation_id}:
+    post:
+      security:
+        - admin_api_key: []
+      tags:
+        - ApiKey
+      summary: Create a new API key
+      operationId: createApiKey
+      parameters:
+        - name: "organisation_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        '200':
+          description: Api Key Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiKeyResponse"
+              examples:
+                SuccessfulKeyCreation:
+                  $ref: "#/components/examples/ApiKeyResponse"
+  /event_manager/api_key/{organisation_id}/{key_id}:
+    delete:
+      security:
+        - admin_api_key: []
+      tags:
+        - ApiKey
+      summary: Delete an API key
+      operationId: deleteApiKey
+      parameters:
+        - name: "organisation_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        - name: "key_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+          example: "f0a8ba52-f840-434e-8883-1fbf5ddab7ca"
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                ResourceNotFound:
+                  $ref: '#/components/examples/NotFound'
+
+
+
+externalDocs:
+  description: Find out more about HighCohesion
+  url: 'https://highcohesion.com'
+components:
+  schemas:
+    AsyncResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        message:
+          type: string
+    SyncResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    PatchSyncResponse:
+      type: object
+      properties:
+        message:
+          type: string
+    JobRequest:
+      required:
+        - stream_id
+        - payload_in
+      type: object
+      properties:
+        stream_id:
+          type: string
+          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
+        payload_in_list:
+          $ref: '#/components/schemas/PayloadInList'
+    ReplicateWebhook:
+      required:
+        - job_id
+      type: object
+      properties:
+        job_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+    JobList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Job'
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        stream_id:
+          type: string
+          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
+        replicated_job:
+          type: boolean
+          example: true
+        original_job_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        scheduled_job_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        status:
+          type: string
+          description: PENDING|PROCESSING|FINISHED|FAILED|FAILED_WITH_ISSUES
+          example: 'FINISHED'
+        message:
+          type: string
+          example: 'The job finished.'
+        due_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+        started_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+        finished_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+        created_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+        updated_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+    ScheduleConfigurationRequest:
+      type: object
+      properties:
+        stream_id:
+          type: string
+          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
+        scheduled_option:
+          type: string
+          example: '*/5 * * * *'
+        active:
+          type: boolean
+    ScheduleConfiguration:
+      type: object
+      properties:
+        stream_id:
+          type: string
+          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
+        scheduled_option:
+          type: string
+          example: '*/5 * * * *'
+        active:
+          type: boolean
+        created_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+        updated_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+    EventList:
+      type: array
+      items:
+        $ref: '#/components/schemas/Event'
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        stream_id:
+          type: string
+          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
+        job_id:
+          type: string
+          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
+        payload_in_url:
+          type: string
+          example: 'https://s3-bucket-temporary-url.com'
+        payload_out_url:
+          type: string
+          example: 'https://s3-bucket-temporary-url.com'
+        status:
+          type: string
+          example: 'OK'
+        message:
+          type: string
+          example: 'Event has been processed'
+        created_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+        updated_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+    UpdateEventRequest:
+      type: object
+      required:
+        - id
+        - status
+        - message
+        - destination_id
+        - destination_parent_id
+      properties:
+        id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        status:
+          type: string
+          example: 'OK'
+        message:
+          type: string
+          example: 'The event has been sent OK to destination system'
+        destination_id:
+          type: string
+          example: '1234567890'
+        destination_parent_id:
+          type: string
+          example: '1234567890'
+    UpdateEventEntityRequest:
+      type: object
+      required:
+        - id
+        - destination_id
+        - destination_parent_id
+      properties:
+        id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        destination_id:
+          type: string
+          example: '1234567890'
+        destination_parent_id:
+          example: 'SKU-AAAA'
+    UpdateJobRequest:
+      type: object
+      required:
+        - id
+        - status
+        - message
+      properties:
+        id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        status:
+          type: string
+          example: 'FINISHED'
+        message:
+          type: string
+          example: 'The job finished'
+    ReplicateJobRequest:
+      type: object
+      required:
+        - job_id
+      properties:
+        job_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        payload_in_list:
+          $ref: '#/components/schemas/PayloadInList'
+    JobScheduleRequest:
+      type: object
+      required:
+        - stream_id
+      properties:
+        stream_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        original_job_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        due_at:
+          type: string
+          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
+          description: DD/MM/YYYY hh:mm:ss
+          example: 2021/03/21 12:23:22
+    ReplicateEventRequest:
+      type: object
+      required:
+        - event_id
+      properties:
+        event_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        payload_in:
+          $ref: '#/components/schemas/PayloadIn'
+    RedriveEventRequest:
+      type: object
+      required:
+        - event_id
+      properties:
+        event_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+    PayloadInList:
+      type: array
+      items:
+        $ref: '#/components/schemas/PayloadIn'
+    PayloadIn:
+      type: object
+      example:
+        title: 'abcde'
+        price: 12.5
+        currency: 'EUR'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    DataJson:
+      type: object
+    DataXml:
+      type: string
+    DataCsv:
+      type: string
+    ApiKeyResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'f0a8ba52-f840-434e-8883-1fbf5ddab7ca'
+        key:
+          type: string
+          example: 'm89PBqZxw0s8p6sPcxrUZACaYH610lZn'
+  requestBodies:
+    Job:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobRequest'
+    ReplicateJob:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplicateJobRequest'
+    ReplicateEvent:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ReplicateEventRequest'
+    ScheduleConfigurationRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ScheduleConfigurationRequest'
+    JobScheduleRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/JobScheduleRequest'
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
+    admin_api_key:
+      type: apiKey
+      name: api_key
+      in: header
+  examples:
+    JobRequest:
+      value:
+        - stream_id: "1234"
+    ScheduleConfiguration:
+      value:
+        stream_id: "1234"
+        scheduled_option: '* * * * *'
+        active: true
+        created_at: 2021/03/21 12:23:22
+        updated_at: 2021/03/21 12:23:22
+    PayloadIn:
+      value:
+        - id: 1
+          title: 'P'
+          price: 123
+    RedriveEventRequest:
+      value:
+        event_id: '60e5b1b405b1e2db6ebd3bee'
+    UpdateStatusRequest:
+      value:
+        id: '60e5b1b405b1e2db6ebd3bee'
+        status: 'FINISHED'
+        message: 'The job has finished'
+    UpdateEventRequest:
+      value:
+        id: '2455b1b405b1e2db6ebd3321'
+        status: 'OK'
+        message: 'Event was sent to destination system'
+        destination_id: 'DESTINATION_ID OR EMPTY'
+    UpdateEventEntityRequest:
+      value:
+        id: '2455b1b405b1e2db6ebd3321'
+        destination_id: '1234567890'
+        destination_parent_id: 'abcdefc'
+    ApiKeyResponse:
+      value:
+        id: 'f0a8ba52-f840-434e-8883-1fbf5ddab7ca'
+        key: 'm89PBqZxw0s8p6sPcxrUZACaYH610lZn'
+    SuccessfulAsyncResponse:
+      value:
+        id: '60e5b1b405b1e2db6ebd3bee'
+        message: 'Operation is accepted. To get an update use the request.'
+        request: '/job/60e5b1b405b1e2db6ebd3bee'
+    SuccessfulSyncResponse:
+      value:
+        message: 'Operation is accepted.'
+    SuccessfulPatchSyncResponse:
+      value:
+        message: 'Operation is accepted.'
+    BadRequest:
+      value:
+        code: 400
+        message: 'Request failed with errors: ...'
+    NotFound:
+      value:
+        code: 404
+        message: 'Resource not found.'
+    InternalError:
+      value:
+        code: 500
+        message: 'An error occurred, please try later.'

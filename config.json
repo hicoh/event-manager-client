@@ -1,0 +1,12 @@
+{
+  "variableNamingConvention": "camelCase",
+  "packagePath": "hicoh/event-manager-client",
+  "invokerPackage": "HiCo\\EventManagerClient",
+  "modelPackage":"Model",
+  "apiPackage":"Service",
+  "srcBasePath":"src/",
+  "gitUserId": "hicoh",
+  "gitRepoId": "event-manager-client",
+  "composerVendorName": "hicoh",
+  "composerProjectName": "event-manager-client"
+}
