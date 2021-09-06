@@ -9,9 +9,6 @@ info:
   contact:
     email: admin@highcohesion.com
 servers:
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/HighCohesion/Public-Gateway/1.0.0
-
   - description: HighCohesion API
     url: 'https://api.highcohesion.com/v1'
 tags:

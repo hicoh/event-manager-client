@@ -84,7 +84,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://virtserver.swaggerhub.com/HighCohesion/Public-Gateway/1.0.0';
+    protected $host = 'https://api.highcohesion.com/v1';
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
