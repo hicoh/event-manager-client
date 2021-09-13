@@ -1,17 +1,18 @@
 # HiCo\EventManagerClient\ApiKeyApi
 
-All URIs are relative to https://virtserver.swaggerhub.com/HighCohesion/Public-Gateway/1.0.0.
+All URIs are relative to https://api.highcohesion.com/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createApiKey()**](ApiKeyApi.md#createApiKey) | **POST** /event_manager/api_key/{organisation_id} | Create a new API key
+[**createApiKey()**](ApiKeyApi.md#createApiKey) | **POST** /event_manager/api_key | Create a new API key
 [**deleteApiKey()**](ApiKeyApi.md#deleteApiKey) | **DELETE** /event_manager/api_key/{organisation_id}/{key_id} | Delete an API key
+[**getAllApiKeysByOrganisation()**](ApiKeyApi.md#getAllApiKeysByOrganisation) | **GET** /event_manager/api_key/all/organisation/{organisation_id} | Fetch all API keys associated with an Organisation
 
 
 ## `createApiKey()`
 
 ```php
-createApiKey($organisationId): \HiCo\EventManagerClient\Model\ApiKeyResponse
+createApiKey($apiKeyRequest): \HiCo\EventManagerClient\Model\ApiKeyResponse
 ```
 
 Create a new API key
@@ -24,9 +25,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: admin_api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\ApiKeyApi(
@@ -35,10 +36,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\ApiKeyApi(
     new GuzzleHttp\Client(),
     $config
 );
-$organisationId = 123e4567-e89b-12d3-a456-426614174000; // string
+$apiKeyRequest = new \HiCo\EventManagerClient\Model\ApiKeyRequest(); // \HiCo\EventManagerClient\Model\ApiKeyRequest
 
 try {
-    $result = $apiInstance->createApiKey($organisationId);
+    $result = $apiInstance->createApiKey($apiKeyRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ApiKeyApi->createApiKey: ', $e->getMessage(), PHP_EOL;
@@ -49,7 +50,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | **string**|  |
+ **apiKeyRequest** | [**\HiCo\EventManagerClient\Model\ApiKeyRequest**](../Model/ApiKeyRequest.md)|  | [optional]
 
 ### Return type
 
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -84,9 +85,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: admin_api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\ApiKeyApi(
@@ -115,6 +116,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[admin_api_key](../../README.md#admin_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAllApiKeysByOrganisation()`
+
+```php
+getAllApiKeysByOrganisation($organisationId): \HiCo\EventManagerClient\Model\FullApiKey[]
+```
+
+Fetch all API keys associated with an Organisation
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: admin_api_key
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
+
+
+$apiInstance = new HiCo\EventManagerClient\Api\ApiKeyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$organisationId = 123e4567-e89b-12d3-a456-426614174000; // string
+
+try {
+    $result = $apiInstance->getAllApiKeysByOrganisation($organisationId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ApiKeyApi->getAllApiKeysByOrganisation: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationId** | **string**|  |
+
+### Return type
+
+[**\HiCo\EventManagerClient\Model\FullApiKey[]**](../Model/FullApiKey.md)
 
 ### Authorization
 

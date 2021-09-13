@@ -1,6 +1,6 @@
 # HiCo\EventManagerClient\EventApi
 
-All URIs are relative to https://virtserver.swaggerhub.com/HighCohesion/Public-Gateway/1.0.0.
+All URIs are relative to https://api.highcohesion.com/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 ## `getEventById()`
 
 ```php
-getEventById($eventId, $organisationId): \HiCo\EventManagerClient\Model\Event
+getEventById($eventId): \HiCo\EventManagerClient\Model\Event
 ```
 
 Get an event by event id
@@ -27,9 +27,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
@@ -39,10 +39,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
     $config
 );
 $eventId = 'eventId_example'; // string | The event id
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->getEventById($eventId, $organisationId);
+    $result = $apiInstance->getEventById($eventId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventApi->getEventById: ', $e->getMessage(), PHP_EOL;
@@ -54,7 +53,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **eventId** | **string**| The event id |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -76,7 +74,7 @@ Name | Type | Description  | Notes
 ## `getEventsBy()`
 
 ```php
-getEventsBy($organisationId, $eventId, $jobId, $streamId, $status, $limit, $orderBy, $offset): \HiCo\EventManagerClient\Model\Event[]
+getEventsBy($id, $jobId, $streamId, $status, $limit, $orderBy, $offset): \HiCo\EventManagerClient\Model\Event[]
 ```
 
 Get a list of events by
@@ -89,9 +87,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
@@ -100,8 +98,7 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
     new GuzzleHttp\Client(),
     $config
 );
-$organisationId = 'organisationId_example'; // string
-$eventId = 'eventId_example'; // string | The event id
+$id = 'id_example'; // string | The event id
 $jobId = 'jobId_example'; // string | The job id
 $streamId = 'streamId_example'; // string | The stream id
 $status = 'status_example'; // string | The status
@@ -110,7 +107,7 @@ $orderBy = 'orderBy_example'; // string | order by one specific field (orderBy=c
 $offset = 'offset_example'; // string | the position of the first result to retrieve (offset=100)
 
 try {
-    $result = $apiInstance->getEventsBy($organisationId, $eventId, $jobId, $streamId, $status, $limit, $orderBy, $offset);
+    $result = $apiInstance->getEventsBy($id, $jobId, $streamId, $status, $limit, $orderBy, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventApi->getEventsBy: ', $e->getMessage(), PHP_EOL;
@@ -121,8 +118,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | **string**|  | [optional]
- **eventId** | **string**| The event id | [optional]
+ **id** | **string**| The event id | [optional]
  **jobId** | **string**| The job id | [optional]
  **streamId** | **string**| The stream id | [optional]
  **status** | **string**| The status | [optional]
@@ -150,7 +146,7 @@ Name | Type | Description  | Notes
 ## `redriveEvent()`
 
 ```php
-redriveEvent($redriveEventRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
+redriveEvent($redriveEventRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Redrive Event
@@ -163,9 +159,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
@@ -175,10 +171,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
     $config
 );
 $redriveEventRequest = new \HiCo\EventManagerClient\Model\RedriveEventRequest(); // \HiCo\EventManagerClient\Model\RedriveEventRequest | The event to redrive
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->redriveEvent($redriveEventRequest, $organisationId);
+    $result = $apiInstance->redriveEvent($redriveEventRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventApi->redriveEvent: ', $e->getMessage(), PHP_EOL;
@@ -190,7 +185,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **redriveEventRequest** | [**\HiCo\EventManagerClient\Model\RedriveEventRequest**](../Model/RedriveEventRequest.md)| The event to redrive |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -212,7 +206,7 @@ Name | Type | Description  | Notes
 ## `replicateEvent()`
 
 ```php
-replicateEvent($organisationId, $replicateEventRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+replicateEvent($replicateEventRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Replicate Event
@@ -225,9 +219,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
@@ -236,11 +230,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
     new GuzzleHttp\Client(),
     $config
 );
-$organisationId = 'organisationId_example'; // string
 $replicateEventRequest = new \HiCo\EventManagerClient\Model\ReplicateEventRequest(); // \HiCo\EventManagerClient\Model\ReplicateEventRequest
 
 try {
-    $result = $apiInstance->replicateEvent($organisationId, $replicateEventRequest);
+    $result = $apiInstance->replicateEvent($replicateEventRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventApi->replicateEvent: ', $e->getMessage(), PHP_EOL;
@@ -251,7 +244,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | **string**|  | [optional]
  **replicateEventRequest** | [**\HiCo\EventManagerClient\Model\ReplicateEventRequest**](../Model/ReplicateEventRequest.md)|  | [optional]
 
 ### Return type
@@ -274,7 +266,7 @@ Name | Type | Description  | Notes
 ## `updateEvent()`
 
 ```php
-updateEvent($updateEventRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
+updateEvent($updateEventRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Update Event
@@ -287,9 +279,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
@@ -299,10 +291,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
     $config
 );
 $updateEventRequest = new \HiCo\EventManagerClient\Model\UpdateEventRequest(); // \HiCo\EventManagerClient\Model\UpdateEventRequest | The fields to update
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->updateEvent($updateEventRequest, $organisationId);
+    $result = $apiInstance->updateEvent($updateEventRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventApi->updateEvent: ', $e->getMessage(), PHP_EOL;
@@ -314,7 +305,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateEventRequest** | [**\HiCo\EventManagerClient\Model\UpdateEventRequest**](../Model/UpdateEventRequest.md)| The fields to update |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 

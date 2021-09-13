@@ -1,6 +1,6 @@
 <?php
 /**
- * OrganisationApi
+ * HealthApi
  * PHP version 7.3
  *
  * @category Class
@@ -40,14 +40,14 @@ use HiCo\EventManagerClient\HeaderSelector;
 use HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * OrganisationApi Class Doc Comment
+ * HealthApi Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class OrganisationApi
+class HealthApi
 {
     /**
      * @var ClientInterface
@@ -116,36 +116,34 @@ class OrganisationApi
     }
 
     /**
-     * Operation createOrganisationIndex
+     * Operation getHealth
      *
-     * Create the organisation tables
+     * Get Health
      *
-     * @param  string $organisationId organisationId (required)
      *
      * @throws \HiCo\EventManagerClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HiCo\EventManagerClient\Model\SyncResponse
+     * @return \HiCo\EventManagerClient\Model\Health
      */
-    public function createOrganisationIndex($organisationId)
+    public function getHealth()
     {
-        list($response) = $this->createOrganisationIndexWithHttpInfo($organisationId);
+        list($response) = $this->getHealthWithHttpInfo();
         return $response;
     }
 
     /**
-     * Operation createOrganisationIndexWithHttpInfo
+     * Operation getHealthWithHttpInfo
      *
-     * Create the organisation tables
+     * Get Health
      *
-     * @param  string $organisationId (required)
      *
      * @throws \HiCo\EventManagerClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HiCo\EventManagerClient\Model\SyncResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HiCo\EventManagerClient\Model\Health, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOrganisationIndexWithHttpInfo($organisationId)
+    public function getHealthWithHttpInfo()
     {
-        $request = $this->createOrganisationIndexRequest($organisationId);
+        $request = $this->getHealthRequest();
 
         try {
             $options = $this->createHttpClientOption();
@@ -177,20 +175,20 @@ class OrganisationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HiCo\EventManagerClient\Model\SyncResponse' === '\SplFileObject') {
+                    if ('\HiCo\EventManagerClient\Model\Health' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HiCo\EventManagerClient\Model\SyncResponse', []),
+                        ObjectSerializer::deserialize($content, '\HiCo\EventManagerClient\Model\Health', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HiCo\EventManagerClient\Model\SyncResponse';
+            $returnType = '\HiCo\EventManagerClient\Model\Health';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -208,7 +206,7 @@ class OrganisationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HiCo\EventManagerClient\Model\SyncResponse',
+                        '\HiCo\EventManagerClient\Model\Health',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -219,18 +217,17 @@ class OrganisationApi
     }
 
     /**
-     * Operation createOrganisationIndexAsync
+     * Operation getHealthAsync
      *
-     * Create the organisation tables
+     * Get Health
      *
-     * @param  string $organisationId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrganisationIndexAsync($organisationId)
+    public function getHealthAsync()
     {
-        return $this->createOrganisationIndexAsyncWithHttpInfo($organisationId)
+        return $this->getHealthAsyncWithHttpInfo()
             ->then(
                 function ($response) {
                     return $response[0];
@@ -239,19 +236,18 @@ class OrganisationApi
     }
 
     /**
-     * Operation createOrganisationIndexAsyncWithHttpInfo
+     * Operation getHealthAsyncWithHttpInfo
      *
-     * Create the organisation tables
+     * Get Health
      *
-     * @param  string $organisationId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrganisationIndexAsyncWithHttpInfo($organisationId)
+    public function getHealthAsyncWithHttpInfo()
     {
-        $returnType = '\HiCo\EventManagerClient\Model\SyncResponse';
-        $request = $this->createOrganisationIndexRequest($organisationId);
+        $returnType = '\HiCo\EventManagerClient\Model\Health';
+        $request = $this->getHealthRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -287,23 +283,16 @@ class OrganisationApi
     }
 
     /**
-     * Create request for operation 'createOrganisationIndex'
+     * Create request for operation 'getHealth'
      *
-     * @param  string $organisationId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createOrganisationIndexRequest($organisationId)
+    public function getHealthRequest()
     {
-        // verify the required parameter 'organisationId' is set
-        if ($organisationId === null || (is_array($organisationId) && count($organisationId) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $organisationId when calling createOrganisationIndex'
-            );
-        }
 
-        $resourcePath = '/event_manager/organisation/{organisation_id}/index';
+        $resourcePath = '/event_manager/health';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -312,14 +301,6 @@ class OrganisationApi
 
 
 
-        // path params
-        if ($organisationId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'organisation_id' . '}',
-                ObjectSerializer::toPathValue($organisationId),
-                $resourcePath
-            );
-        }
 
 
         if ($multipart) {
@@ -377,7 +358,7 @@ class OrganisationApi
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -1,6 +1,6 @@
 # HiCo\EventManagerClient\JobApi
 
-All URIs are relative to https://virtserver.swaggerhub.com/HighCohesion/Public-Gateway/1.0.0.
+All URIs are relative to https://api.highcohesion.com/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 ## `createJob()`
 
 ```php
-createJob($organisationId, $jobRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+createJob($jobRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Create a new job
@@ -28,9 +28,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
@@ -39,11 +39,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
     new GuzzleHttp\Client(),
     $config
 );
-$organisationId = 'organisationId_example'; // string
 $jobRequest = new \HiCo\EventManagerClient\Model\JobRequest(); // \HiCo\EventManagerClient\Model\JobRequest
 
 try {
-    $result = $apiInstance->createJob($organisationId, $jobRequest);
+    $result = $apiInstance->createJob($jobRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JobApi->createJob: ', $e->getMessage(), PHP_EOL;
@@ -54,7 +53,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | **string**|  | [optional]
  **jobRequest** | [**\HiCo\EventManagerClient\Model\JobRequest**](../Model/JobRequest.md)|  | [optional]
 
 ### Return type
@@ -77,7 +75,7 @@ Name | Type | Description  | Notes
 ## `createJobSchedule()`
 
 ```php
-createJobSchedule($organisationId, $jobScheduleRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+createJobSchedule($jobScheduleRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Create a job schedule
@@ -90,9 +88,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
@@ -101,11 +99,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
     new GuzzleHttp\Client(),
     $config
 );
-$organisationId = 'organisationId_example'; // string
 $jobScheduleRequest = new \HiCo\EventManagerClient\Model\JobScheduleRequest(); // \HiCo\EventManagerClient\Model\JobScheduleRequest
 
 try {
-    $result = $apiInstance->createJobSchedule($organisationId, $jobScheduleRequest);
+    $result = $apiInstance->createJobSchedule($jobScheduleRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JobApi->createJobSchedule: ', $e->getMessage(), PHP_EOL;
@@ -116,7 +113,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | **string**|  | [optional]
  **jobScheduleRequest** | [**\HiCo\EventManagerClient\Model\JobScheduleRequest**](../Model/JobScheduleRequest.md)|  | [optional]
 
 ### Return type
@@ -139,7 +135,7 @@ Name | Type | Description  | Notes
 ## `getJobById()`
 
 ```php
-getJobById($jobId, $organisationId): \HiCo\EventManagerClient\Model\Job
+getJobById($jobId): \HiCo\EventManagerClient\Model\Job
 ```
 
 Get a job by job id
@@ -152,9 +148,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
@@ -164,10 +160,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
     $config
 );
 $jobId = 'jobId_example'; // string | The job id
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->getJobById($jobId, $organisationId);
+    $result = $apiInstance->getJobById($jobId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JobApi->getJobById: ', $e->getMessage(), PHP_EOL;
@@ -179,7 +174,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **jobId** | **string**| The job id |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -201,7 +195,7 @@ Name | Type | Description  | Notes
 ## `getJobsBy()`
 
 ```php
-getJobsBy($organisationId, $jobId, $streamId, $status): \HiCo\EventManagerClient\Model\Job[]
+getJobsBy($id, $streamId, $status, $limit, $orderBy, $offset): \HiCo\EventManagerClient\Model\Job[]
 ```
 
 Get a list of jobs by
@@ -214,9 +208,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
@@ -225,13 +219,15 @@ $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
     new GuzzleHttp\Client(),
     $config
 );
-$organisationId = 'organisationId_example'; // string
-$jobId = 'jobId_example'; // string | The job id
+$id = 'id_example'; // string | The job id
 $streamId = 'streamId_example'; // string | The stream id of the job
 $status = 'status_example'; // string | The job status
+$limit = 'limit_example'; // string | The limit (limit=20 to get the first 20 jobs)
+$orderBy = 'orderBy_example'; // string | order by one specific field (orderBy=createdAt,desc, orderBy=status,asc)
+$offset = 'offset_example'; // string | the position of the first result to retrieve (offset=100)
 
 try {
-    $result = $apiInstance->getJobsBy($organisationId, $jobId, $streamId, $status);
+    $result = $apiInstance->getJobsBy($id, $streamId, $status, $limit, $orderBy, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JobApi->getJobsBy: ', $e->getMessage(), PHP_EOL;
@@ -242,10 +238,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | **string**|  | [optional]
- **jobId** | **string**| The job id | [optional]
+ **id** | **string**| The job id | [optional]
  **streamId** | **string**| The stream id of the job | [optional]
  **status** | **string**| The job status | [optional]
+ **limit** | **string**| The limit (limit&#x3D;20 to get the first 20 jobs) | [optional]
+ **orderBy** | **string**| order by one specific field (orderBy&#x3D;createdAt,desc, orderBy&#x3D;status,asc) | [optional]
+ **offset** | **string**| the position of the first result to retrieve (offset&#x3D;100) | [optional]
 
 ### Return type
 
@@ -267,7 +265,7 @@ Name | Type | Description  | Notes
 ## `replicateJob()`
 
 ```php
-replicateJob($organisationId, $replicateJobRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+replicateJob($replicateJobRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Replicate job
@@ -280,9 +278,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
@@ -291,11 +289,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
     new GuzzleHttp\Client(),
     $config
 );
-$organisationId = 'organisationId_example'; // string
 $replicateJobRequest = new \HiCo\EventManagerClient\Model\ReplicateJobRequest(); // \HiCo\EventManagerClient\Model\ReplicateJobRequest
 
 try {
-    $result = $apiInstance->replicateJob($organisationId, $replicateJobRequest);
+    $result = $apiInstance->replicateJob($replicateJobRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JobApi->replicateJob: ', $e->getMessage(), PHP_EOL;
@@ -306,7 +303,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | **string**|  | [optional]
  **replicateJobRequest** | [**\HiCo\EventManagerClient\Model\ReplicateJobRequest**](../Model/ReplicateJobRequest.md)|  | [optional]
 
 ### Return type
@@ -329,7 +325,7 @@ Name | Type | Description  | Notes
 ## `updateJob()`
 
 ```php
-updateJob($updateJobRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
+updateJob($updateJobRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Update job
@@ -342,9 +338,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
@@ -354,10 +350,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
     $config
 );
 $updateJobRequest = new \HiCo\EventManagerClient\Model\UpdateJobRequest(); // \HiCo\EventManagerClient\Model\UpdateJobRequest | The fields to update
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->updateJob($updateJobRequest, $organisationId);
+    $result = $apiInstance->updateJob($updateJobRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JobApi->updateJob: ', $e->getMessage(), PHP_EOL;
@@ -369,7 +364,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateJobRequest** | [**\HiCo\EventManagerClient\Model\UpdateJobRequest**](../Model/UpdateJobRequest.md)| The fields to update |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncResponse
+ * FullApiKey
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * AsyncResponse Class Doc Comment
+ * FullApiKey Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
@@ -43,7 +43,7 @@ use \HiCo\EventManagerClient\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class FullApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncResponse';
+    protected static $openAPIModelName = 'FullApiKey';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'message' => 'string'
+        'key' => 'string',
+        'access' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -73,7 +75,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'message' => null
+        'key' => null,
+        'access' => null,
+        'name' => null
     ];
 
     /**
@@ -104,7 +108,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'message' => 'message'
+        'key' => 'key',
+        'access' => 'access',
+        'name' => 'name'
     ];
 
     /**
@@ -114,7 +120,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'message' => 'setMessage'
+        'key' => 'setKey',
+        'access' => 'setAccess',
+        'name' => 'setName'
     ];
 
     /**
@@ -124,7 +132,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'message' => 'getMessage'
+        'key' => 'getKey',
+        'access' => 'getAccess',
+        'name' => 'getName'
     ];
 
     /**
@@ -185,7 +195,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['id'] = $data['id'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['access'] = $data['access'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -237,25 +249,73 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets message
+     * Gets key
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getKey()
     {
-        return $this->container['message'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets message
+     * Sets key
      *
-     * @param string|null $message message
+     * @param string|null $key key
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setKey($key)
     {
-        $this->container['message'] = $message;
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets access
+     *
+     * @return string|null
+     */
+    public function getAccess()
+    {
+        return $this->container['access'];
+    }
+
+    /**
+     * Sets access
+     *
+     * @param string|null $access access
+     *
+     * @return self
+     */
+    public function setAccess($access)
+    {
+        $this->container['access'] = $access;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }

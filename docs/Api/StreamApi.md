@@ -1,6 +1,6 @@
 # HiCo\EventManagerClient\StreamApi
 
-All URIs are relative to https://virtserver.swaggerhub.com/HighCohesion/Public-Gateway/1.0.0.
+All URIs are relative to https://api.highcohesion.com/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ## `createScheduleConfiguration()`
 
 ```php
-createScheduleConfiguration($organisationId, $scheduleConfigurationRequest): \HiCo\EventManagerClient\Model\ScheduleConfiguration
+createScheduleConfiguration($scheduleConfigurationRequest): \HiCo\EventManagerClient\Model\ScheduleConfiguration
 ```
 
 Create a new Stream Schedule Configuration
@@ -24,9 +24,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
@@ -35,11 +35,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
     new GuzzleHttp\Client(),
     $config
 );
-$organisationId = 'organisationId_example'; // string
 $scheduleConfigurationRequest = new \HiCo\EventManagerClient\Model\ScheduleConfigurationRequest(); // \HiCo\EventManagerClient\Model\ScheduleConfigurationRequest
 
 try {
-    $result = $apiInstance->createScheduleConfiguration($organisationId, $scheduleConfigurationRequest);
+    $result = $apiInstance->createScheduleConfiguration($scheduleConfigurationRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StreamApi->createScheduleConfiguration: ', $e->getMessage(), PHP_EOL;
@@ -50,7 +49,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | **string**|  | [optional]
  **scheduleConfigurationRequest** | [**\HiCo\EventManagerClient\Model\ScheduleConfigurationRequest**](../Model/ScheduleConfigurationRequest.md)|  | [optional]
 
 ### Return type
@@ -73,7 +71,7 @@ Name | Type | Description  | Notes
 ## `updateScheduleConfigurationAttributes()`
 
 ```php
-updateScheduleConfigurationAttributes($organisationId, $scheduleConfigurationRequest): \HiCo\EventManagerClient\Model\PatchSyncResponse
+updateScheduleConfigurationAttributes($scheduleConfigurationRequest): \HiCo\EventManagerClient\Model\PatchSyncResponse
 ```
 
 Updates Stream Schedule Configuration option and active attributes.
@@ -86,9 +84,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
@@ -97,11 +95,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
     new GuzzleHttp\Client(),
     $config
 );
-$organisationId = 'organisationId_example'; // string
 $scheduleConfigurationRequest = new \HiCo\EventManagerClient\Model\ScheduleConfigurationRequest(); // \HiCo\EventManagerClient\Model\ScheduleConfigurationRequest
 
 try {
-    $result = $apiInstance->updateScheduleConfigurationAttributes($organisationId, $scheduleConfigurationRequest);
+    $result = $apiInstance->updateScheduleConfigurationAttributes($scheduleConfigurationRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StreamApi->updateScheduleConfigurationAttributes: ', $e->getMessage(), PHP_EOL;
@@ -112,7 +109,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | **string**|  | [optional]
  **scheduleConfigurationRequest** | [**\HiCo\EventManagerClient\Model\ScheduleConfigurationRequest**](../Model/ScheduleConfigurationRequest.md)|  | [optional]
 
 ### Return type
