@@ -1,6 +1,6 @@
 # HiCo\EventManagerClient\WebhookApi
 
-All URIs are relative to https://virtserver.swaggerhub.com/HighCohesion/Public-Gateway/1.0.0.
+All URIs are relative to https://api.highcohesion.com/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ## `postDynamicWebhook()`
 
 ```php
-postDynamicWebhook($streamId, $accessToken, $body, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
+postDynamicWebhook($streamId, $accessToken, $body): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Dynamic Webhook
@@ -34,10 +34,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
 $streamId = 123e4567-e89b-12d3-a456-426614174000; // string
 $accessToken = 1234567890; // string
 $body = new \stdClass; // object | Event Data
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->postDynamicWebhook($streamId, $accessToken, $body, $organisationId);
+    $result = $apiInstance->postDynamicWebhook($streamId, $accessToken, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->postDynamicWebhook: ', $e->getMessage(), PHP_EOL;
@@ -51,7 +50,6 @@ Name | Type | Description  | Notes
  **streamId** | **string**|  |
  **accessToken** | **string**|  |
  **body** | **object**| Event Data |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -73,7 +71,7 @@ No authorization required
 ## `postStaticWebhook()`
 
 ```php
-postStaticWebhook($streamId, $accessToken, $body, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
+postStaticWebhook($streamId, $accessToken, $body): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Static Webhook
@@ -94,10 +92,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
 $streamId = 123e4567-e89b-12d3-a456-426614174000; // string
 $accessToken = 1234567890; // string
 $body = new \stdClass; // object | Event Data
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->postStaticWebhook($streamId, $accessToken, $body, $organisationId);
+    $result = $apiInstance->postStaticWebhook($streamId, $accessToken, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->postStaticWebhook: ', $e->getMessage(), PHP_EOL;
@@ -111,7 +108,6 @@ Name | Type | Description  | Notes
  **streamId** | **string**|  |
  **accessToken** | **string**|  |
  **body** | **object**| Event Data |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -133,7 +129,7 @@ No authorization required
 ## `replicateDynamicWebhook()`
 
 ```php
-replicateDynamicWebhook($replicateWebhook, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
+replicateDynamicWebhook($replicateWebhook): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Replicate Dynamic Webhook
@@ -152,10 +148,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     new GuzzleHttp\Client()
 );
 $replicateWebhook = new \HiCo\EventManagerClient\Model\ReplicateWebhook(); // \HiCo\EventManagerClient\Model\ReplicateWebhook | Job Data
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->replicateDynamicWebhook($replicateWebhook, $organisationId);
+    $result = $apiInstance->replicateDynamicWebhook($replicateWebhook);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->replicateDynamicWebhook: ', $e->getMessage(), PHP_EOL;
@@ -167,7 +162,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **replicateWebhook** | [**\HiCo\EventManagerClient\Model\ReplicateWebhook**](../Model/ReplicateWebhook.md)| Job Data |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -189,7 +183,7 @@ No authorization required
 ## `replicateStaticWebhook()`
 
 ```php
-replicateStaticWebhook($replicateWebhook, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
+replicateStaticWebhook($replicateWebhook): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Replicate Static Webhook
@@ -208,10 +202,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     new GuzzleHttp\Client()
 );
 $replicateWebhook = new \HiCo\EventManagerClient\Model\ReplicateWebhook(); // \HiCo\EventManagerClient\Model\ReplicateWebhook | Job Data
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->replicateStaticWebhook($replicateWebhook, $organisationId);
+    $result = $apiInstance->replicateStaticWebhook($replicateWebhook);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->replicateStaticWebhook: ', $e->getMessage(), PHP_EOL;
@@ -223,7 +216,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **replicateWebhook** | [**\HiCo\EventManagerClient\Model\ReplicateWebhook**](../Model/ReplicateWebhook.md)| Job Data |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 

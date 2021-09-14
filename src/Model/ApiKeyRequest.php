@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncResponse
+ * ApiKeyRequest
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * AsyncResponse Class Doc Comment
+ * ApiKeyRequest Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
@@ -43,7 +43,7 @@ use \HiCo\EventManagerClient\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncResponse';
+    protected static $openAPIModelName = 'ApiKeyRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'message' => 'string'
+        'organisationId' => 'string',
+        'name' => 'string',
+        'access' => 'string'
     ];
 
     /**
@@ -72,8 +73,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'message' => null
+        'organisationId' => null,
+        'name' => null,
+        'access' => null
     ];
 
     /**
@@ -103,8 +105,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'message' => 'message'
+        'organisationId' => 'organisation_id',
+        'name' => 'name',
+        'access' => 'access'
     ];
 
     /**
@@ -113,8 +116,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'message' => 'setMessage'
+        'organisationId' => 'setOrganisationId',
+        'name' => 'setName',
+        'access' => 'setAccess'
     ];
 
     /**
@@ -123,8 +127,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'message' => 'getMessage'
+        'organisationId' => 'getOrganisationId',
+        'name' => 'getName',
+        'access' => 'getAccess'
     ];
 
     /**
@@ -184,8 +189,9 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
+        $this->container['organisationId'] = $data['organisationId'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['access'] = $data['access'] ?? null;
     }
 
     /**
@@ -213,49 +219,73 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets organisationId
      *
      * @return string|null
      */
-    public function getId()
+    public function getOrganisationId()
     {
-        return $this->container['id'];
+        return $this->container['organisationId'];
     }
 
     /**
-     * Sets id
+     * Sets organisationId
      *
-     * @param string|null $id id
+     * @param string|null $organisationId organisationId
      *
      * @return self
      */
-    public function setId($id)
+    public function setOrganisationId($organisationId)
     {
-        $this->container['id'] = $id;
+        $this->container['organisationId'] = $organisationId;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets name
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getName()
     {
-        return $this->container['message'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets message
+     * Sets name
      *
-     * @param string|null $message message
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setName($name)
     {
-        $this->container['message'] = $message;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets access
+     *
+     * @return string|null
+     */
+    public function getAccess()
+    {
+        return $this->container['access'];
+    }
+
+    /**
+     * Sets access
+     *
+     * @param string|null $access access
+     *
+     * @return self
+     */
+    public function setAccess($access)
+    {
+        $this->container['access'] = $access;
 
         return $this;
     }

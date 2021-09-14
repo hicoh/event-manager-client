@@ -1,6 +1,6 @@
 # HiCo\EventManagerClient\EventEntityApi
 
-All URIs are relative to https://virtserver.swaggerhub.com/HighCohesion/Public-Gateway/1.0.0.
+All URIs are relative to https://api.highcohesion.com/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `updateEventEntity()`
 
 ```php
-updateEventEntity($updateEventEntityRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
+updateEventEntity($updateEventEntityRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Update Event Entity
@@ -23,9 +23,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('api_key', 'YOUR_API_KEY');
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('api_key', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\EventEntityApi(
@@ -35,10 +35,9 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventEntityApi(
     $config
 );
 $updateEventEntityRequest = new \HiCo\EventManagerClient\Model\UpdateEventEntityRequest(); // \HiCo\EventManagerClient\Model\UpdateEventEntityRequest | The fields to update
-$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->updateEventEntity($updateEventEntityRequest, $organisationId);
+    $result = $apiInstance->updateEventEntity($updateEventEntityRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventEntityApi->updateEventEntity: ', $e->getMessage(), PHP_EOL;
@@ -50,7 +49,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateEventEntityRequest** | [**\HiCo\EventManagerClient\Model\UpdateEventEntityRequest**](../Model/UpdateEventEntityRequest.md)| The fields to update |
- **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -62,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `array`
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

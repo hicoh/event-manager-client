@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncResponse
+ * Health
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * AsyncResponse Class Doc Comment
+ * Health Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
@@ -43,7 +43,7 @@ use \HiCo\EventManagerClient\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class Health implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncResponse';
+    protected static $openAPIModelName = 'health';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,7 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'message' => 'string'
+        'status' => 'string'
     ];
 
     /**
@@ -72,8 +71,7 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'message' => null
+        'status' => null
     ];
 
     /**
@@ -103,8 +101,7 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'message' => 'message'
+        'status' => 'status'
     ];
 
     /**
@@ -113,8 +110,7 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'message' => 'setMessage'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -123,8 +119,7 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'message' => 'getMessage'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -184,8 +179,7 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
     }
 
     /**
@@ -213,49 +207,25 @@ class AsyncResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets status
      *
      * @return string|null
      */
-    public function getId()
+    public function getStatus()
     {
-        return $this->container['id'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets id
+     * Sets status
      *
-     * @param string|null $id id
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setId($id)
+    public function setStatus($status)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
+        $this->container['status'] = $status;
 
         return $this;
     }

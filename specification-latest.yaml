@@ -3,9 +3,9 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: "1.0.0"
+  version: "1.0.1"
   title: HighCohesion API
-  termsOfService: 'http://highcohesion.co.uk'
+  termsOfService: 'https://highcohesion.co.uk'
   contact:
     email: admin@highcohesion.com
 servers:
@@ -26,6 +26,8 @@ tags:
     description: Operations about organisations
   - name: ApiKey
     description: Operations about API Keys
+  - name: Health
+    description: API Status check
 
 security:
   - api_key: []
@@ -39,11 +41,6 @@ paths:
       summary: Get a job by job id
       operationId: getJobById
       parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
         - name: job_id
           in: path
           description: The job id
@@ -73,12 +70,7 @@ paths:
       summary: Get a list of jobs by
       operationId: getJobsBy
       parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: job_id
+        - name: id
           in: query
           description: The job id
           required: false
@@ -93,6 +85,24 @@ paths:
         - name: status
           in: query
           description: The job status
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: The limit (limit=20 to get the first 20 jobs)
+          required: false
+          schema:
+            type: string
+        - name: order_by
+          in: query
+          description: order by one specific field (orderBy=createdAt,desc, orderBy=status,asc)
+          required: false
+          schema:
+            type: string
+        - name: offset
+          in: query
+          description: the position of the first result to retrieve (offset=100)
           required: false
           schema:
             type: string
@@ -117,12 +127,6 @@ paths:
         - Job
       summary: Create a new job
       operationId: createJob
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       responses:
         202:
           description: Successful operation
@@ -133,20 +137,15 @@ paths:
               examples:
                 SuccessfulAsyncResponse:
                   $ref: "#/components/examples/SuccessfulAsyncResponse"
-
       requestBody:
+        description: Stream Id and array of payload
+        required: true
         $ref: '#/components/requestBodies/Job'
     patch:
       tags:
         - Job
       summary: Update job
       operationId: updateJob
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         description: The fields to update
         required: true
@@ -173,12 +172,6 @@ paths:
         - Job
       summary: Replicate job
       operationId: replicateJob
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         $ref: '#/components/requestBodies/ReplicateJob'
       responses:
@@ -198,12 +191,6 @@ paths:
         - Webhook
       summary: Replicate Static Webhook
       operationId: replicateStaticWebhook
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         description: Job Data
         required: true
@@ -228,12 +215,6 @@ paths:
         - Webhook
       summary: Replicate Dynamic Webhook
       operationId: replicateDynamicWebhook
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         description: Job Data
         required: true
@@ -257,12 +238,6 @@ paths:
         - Job
       summary: Create a job schedule
       operationId: createJobSchedule
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         $ref: '#/components/requestBodies/JobScheduleRequest'
       responses:
@@ -282,12 +257,6 @@ paths:
         - Stream
       summary: Create a new Stream Schedule Configuration
       operationId: createScheduleConfiguration
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         $ref: '#/components/requestBodies/ScheduleConfigurationRequest'
       responses:
@@ -305,12 +274,6 @@ paths:
         - Stream
       summary: Updates Stream Schedule Configuration option and active attributes.
       operationId: updateScheduleConfigurationAttributes
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         $ref: '#/components/requestBodies/ScheduleConfigurationRequest'
       responses:
@@ -330,11 +293,6 @@ paths:
       summary: Get an event by event id
       operationId: getEventById
       parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
         - name: event_id
           in: path
           description: The event id
@@ -364,12 +322,7 @@ paths:
       summary: Get a list of events by
       operationId: getEventsBy
       parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
-        - name: event_id
+        - name: id
           in: query
           description: The event id
           required: false
@@ -432,12 +385,6 @@ paths:
         - Event
       summary: Update Event
       operationId: updateEvent
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         description: The fields to update
         required: true
@@ -464,13 +411,9 @@ paths:
         - Event
       summary: Replicate Event
       operationId: replicateEvent
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
+        description: Event Id and Payload
+        required: true
         $ref: '#/components/requestBodies/ReplicateEvent'
       responses:
         202:
@@ -488,12 +431,6 @@ paths:
         - Event
       summary: Redrive Event
       operationId: redriveEvent
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         description: The event to redrive
         required: true
@@ -520,22 +457,13 @@ paths:
         - EventEntity
       summary: Update Event Entity
       operationId: updateEventEntity
-      parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
       requestBody:
         description: The fields to update
         required: true
         content:
-          array:
+          application/json:
             schema:
               $ref: "#/components/schemas/UpdateEventEntityRequest"
-            examples:
-              UpdateStatusRequest:
-                $ref: "#/components/examples/UpdateEventEntityRequest"
       responses:
         202:
           description: Request accepted
@@ -554,11 +482,6 @@ paths:
       summary: Static Webhook
       operationId: postStaticWebhook
       parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
         - name: "stream_id"
           in: "path"
           required: true
@@ -605,11 +528,6 @@ paths:
       summary: Dynamic Webhook
       operationId: postDynamicWebhook
       parameters:
-        - name: Organisation-Id
-          in: header
-          required: false
-          schema:
-            type: string
         - name: "stream_id"
           in: "path"
           required: true
@@ -673,7 +591,7 @@ paths:
               examples:
                 SuccessfulAsyncResponse:
                   $ref: "#/components/examples/SuccessfulSyncResponse"
-  /event_manager/api_key/{organisation_id}:
+  /event_manager/api_key:
     post:
       security:
         - admin_api_key: []
@@ -681,13 +599,8 @@ paths:
         - ApiKey
       summary: Create a new API key
       operationId: createApiKey
-      parameters:
-        - name: "organisation_id"
-          in: "path"
-          required: true
-          schema:
-            type: "string"
-          example: "123e4567-e89b-12d3-a456-426614174000"
+      requestBody:
+        $ref: '#/components/requestBodies/ApiKeyRequest'
       responses:
         '200':
           description: Api Key Created
@@ -731,7 +644,45 @@ paths:
               examples:
                 ResourceNotFound:
                   $ref: '#/components/examples/NotFound'
+  /event_manager/api_key/all/organisation/{organisation_id}:
+    get:
+      security:
+        - admin_api_key: []
+      tags:
+        - ApiKey
+      summary: Fetch all API keys associated with an Organisation
+      operationId: getAllApiKeysByOrganisation
+      parameters:
+        - name: "organisation_id"
+          in: "path"
+          required: true
+          schema:
+            type: string
+          example: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiKeyList'
 
+  /event_manager/health:
+    get:
+      tags:
+        - Health
+      summary: Get Health
+      operationId: getHealth
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/health'
+              examples:
+                Health:
+                  $ref: '#/components/examples/Health'
 
 
 externalDocs:
@@ -739,6 +690,11 @@ externalDocs:
   url: 'https://highcohesion.com'
 components:
   schemas:
+    health:
+      type: object
+      properties:
+        status:
+          type: string
     AsyncResponse:
       type: object
       properties:
@@ -806,29 +762,24 @@ components:
           example: 'The job finished.'
         due_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
         started_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
         finished_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
         created_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
         updated_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
     ScheduleConfigurationRequest:
       type: object
       properties:
@@ -853,14 +804,12 @@ components:
           type: boolean
         created_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
         updated_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
     EventList:
       type: array
       items:
@@ -891,14 +840,12 @@ components:
           example: 'Event has been processed'
         created_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
         updated_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
     UpdateEventRequest:
       type: object
       required:
@@ -937,6 +884,7 @@ components:
           type: string
           example: '1234567890'
         destination_parent_id:
+          type: string
           example: 'SKU-AAAA'
     UpdateJobRequest:
       type: object
@@ -977,9 +925,8 @@ components:
           example: '60e5b1b405b1e2db6ebd3bee'
         due_at:
           type: string
-          pattern: ^((0[1-9]|[12]\\d|3[01])\\/(0[1-9]|1[0-2])\\/[12]\\d{3}) ([01]?\\d|2[0-3]):([0-5]?\\d):([0-5]?\\d)$
-          description: DD/MM/YYYY hh:mm:ss
-          example: 2021/03/21 12:23:22
+          description: 'DD/MM/YYYY hh:mm:ss'
+          example: '2021/03/21 12:23:22'
     ReplicateEventRequest:
       type: object
       required:
@@ -1001,7 +948,11 @@ components:
     PayloadInList:
       type: array
       items:
-        $ref: '#/components/schemas/PayloadIn'
+        type: object
+        example:
+          title: 'abcde'
+          price: 12.5
+          currency: 'EUR'
     PayloadIn:
       type: object
       example:
@@ -1030,6 +981,37 @@ components:
         key:
           type: string
           example: 'm89PBqZxw0s8p6sPcxrUZACaYH610lZn'
+    ApiKeyRequest:
+      type: object
+      properties:
+        organisation_id:
+          type: string
+          example: 'f0a8ba52-f840-434e-8883-1fbf5ddab7ca'
+        name:
+          type: string
+          example: 'Test API Key'
+        access:
+          type: string
+          example: 'DEFAULT'
+    FullApiKey:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'f0a8ba52-f840-434e-8883-1fbf5ddab7ca'
+        key:
+          type: string
+          example: 'm89PBqZxw0s8p6sPcxrUZACaYH610lZn'
+        access:
+          type: string
+          example: 'DEFAULT'
+        name:
+          type: string
+          example: 'Production API Key'
+    ApiKeyList:
+      type: array
+      items:
+        $ref: '#/components/schemas/FullApiKey'
   requestBodies:
     Job:
       content:
@@ -1056,14 +1038,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/JobScheduleRequest'
+    ApiKeyRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiKeyRequest'
   securitySchemes:
     api_key:
       type: apiKey
-      name: api_key
+      name: apiKey
       in: header
     admin_api_key:
       type: apiKey
-      name: api_key
+      name: apiKey
       in: header
   examples:
     JobRequest:
@@ -1127,3 +1114,6 @@ components:
       value:
         code: 500
         message: 'An error occurred, please try later.'
+    Health:
+      value:
+        status: "ok"
