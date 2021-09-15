@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional]
+**keyId** | **string** |  | [optional]
 **key** | **string** |  | [optional]
 **access** | **string** |  | [optional]
 **name** | **string** |  | [optional]
