@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: "1.0.1"
+  version: "1.0.2"
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -996,7 +996,7 @@ components:
     FullApiKey:
       type: object
       properties:
-        id:
+        key_id:
           type: string
           example: 'f0a8ba52-f840-434e-8883-1fbf5ddab7ca'
         key:
