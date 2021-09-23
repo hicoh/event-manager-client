@@ -22,10 +22,10 @@ Update Event Entity
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\EventEntityApi(
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../../README.md#api_key)
+[apikey](../../README.md#apikey)
 
 ### HTTP request headers
 

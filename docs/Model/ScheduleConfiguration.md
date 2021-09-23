@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [optional]
 **streamId** | **string** |  | [optional]
 **scheduledOption** | **string** |  | [optional]
 **active** | **bool** |  | [optional]

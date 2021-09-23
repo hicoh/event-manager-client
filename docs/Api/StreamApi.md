@@ -5,6 +5,7 @@ All URIs are relative to https://api.highcohesion.com/v1.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createScheduleConfiguration()**](StreamApi.md#createScheduleConfiguration) | **POST** /event_manager/stream/schedule_configuration | Create a new Stream Schedule Configuration
+[**deleteScheduleConfiguration()**](StreamApi.md#deleteScheduleConfiguration) | **DELETE** /event_manager/stream/schedule_configuration/{schedule_configuration_id} | Delete a Stream Schedule Configuration
 [**updateScheduleConfigurationAttributes()**](StreamApi.md#updateScheduleConfigurationAttributes) | **PATCH** /event_manager/stream/schedule_configuration | Updates Stream Schedule Configuration option and active attributes.
 
 
@@ -23,10 +24,10 @@ Create a new Stream Schedule Configuration
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
@@ -57,11 +58,71 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../../README.md#api_key)
+[apikey](../../README.md#apikey)
 
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteScheduleConfiguration()`
+
+```php
+deleteScheduleConfiguration($scheduleConfigurationId): \HiCo\EventManagerClient\Model\SyncResponse
+```
+
+Delete a Stream Schedule Configuration
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
+
+
+$apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$scheduleConfigurationId = 'scheduleConfigurationId_example'; // string | Schedule Configuration Id
+
+try {
+    $result = $apiInstance->deleteScheduleConfiguration($scheduleConfigurationId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling StreamApi->deleteScheduleConfiguration: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scheduleConfigurationId** | **string**| Schedule Configuration Id |
+
+### Return type
+
+[**\HiCo\EventManagerClient\Model\SyncResponse**](../Model/SyncResponse.md)
+
+### Authorization
+
+[apikey](../../README.md#apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -83,10 +144,10 @@ Updates Stream Schedule Configuration option and active attributes.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
@@ -117,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../../README.md#api_key)
+[apikey](../../README.md#apikey)
 
 ### HTTP request headers
 
