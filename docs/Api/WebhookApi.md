@@ -4,8 +4,8 @@ All URIs are relative to https://api.highcohesion.com/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**postDynamicWebhook()**](WebhookApi.md#postDynamicWebhook) | **POST** /event_manager/webhook/dynamic/{stream_id}/{access_token} | Dynamic Webhook
-[**postStaticWebhook()**](WebhookApi.md#postStaticWebhook) | **POST** /event_manager/webhook/static/{stream_id}/{access_token} | Static Webhook
+[**postDynamicWebhook()**](WebhookApi.md#postDynamicWebhook) | **POST** /event_manager/webhook/dynamic/{stream_id} | Dynamic Webhook
+[**postStaticWebhook()**](WebhookApi.md#postStaticWebhook) | **POST** /event_manager/webhook/static/{stream_id} | Static Webhook
 [**replicateDynamicWebhook()**](WebhookApi.md#replicateDynamicWebhook) | **POST** /event_manager/job/replicate/webhook/dynamic | Replicate Dynamic Webhook
 [**replicateStaticWebhook()**](WebhookApi.md#replicateStaticWebhook) | **POST** /event_manager/job/replicate/webhook/static | Replicate Static Webhook
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ## `postDynamicWebhook()`
 
 ```php
-postDynamicWebhook($streamId, $accessToken, $body): \HiCo\EventManagerClient\Model\AsyncResponse
+postDynamicWebhook($streamId, $body): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Dynamic Webhook
@@ -25,18 +25,23 @@ Dynamic Webhook
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
+
 
 $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $streamId = 123e4567-e89b-12d3-a456-426614174000; // string
-$accessToken = 1234567890; // string
 $body = new \stdClass; // object | Event Data
 
 try {
-    $result = $apiInstance->postDynamicWebhook($streamId, $accessToken, $body);
+    $result = $apiInstance->postDynamicWebhook($streamId, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->postDynamicWebhook: ', $e->getMessage(), PHP_EOL;
@@ -48,7 +53,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **streamId** | **string**|  |
- **accessToken** | **string**|  |
  **body** | **object**| Event Data |
 
 ### Return type
@@ -57,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[apikey](../../README.md#apikey)
 
 ### HTTP request headers
 
@@ -71,7 +75,7 @@ No authorization required
 ## `postStaticWebhook()`
 
 ```php
-postStaticWebhook($streamId, $accessToken, $body): \HiCo\EventManagerClient\Model\AsyncResponse
+postStaticWebhook($streamId, $body): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Static Webhook
@@ -83,18 +87,23 @@ Static Webhook
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
+
 
 $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $streamId = 123e4567-e89b-12d3-a456-426614174000; // string
-$accessToken = 1234567890; // string
 $body = new \stdClass; // object | Event Data
 
 try {
-    $result = $apiInstance->postStaticWebhook($streamId, $accessToken, $body);
+    $result = $apiInstance->postStaticWebhook($streamId, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->postStaticWebhook: ', $e->getMessage(), PHP_EOL;
@@ -106,7 +115,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **streamId** | **string**|  |
- **accessToken** | **string**|  |
  **body** | **object**| Event Data |
 
 ### Return type
@@ -115,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[apikey](../../README.md#apikey)
 
 ### HTTP request headers
 

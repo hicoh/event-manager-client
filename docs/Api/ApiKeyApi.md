@@ -24,10 +24,10 @@ Create a new API key
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: admin_api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
+// Configure API key authorization: admin_apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\ApiKeyApi(
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[admin_api_key](../../README.md#admin_api_key)
+[admin_apikey](../../README.md#admin_apikey)
 
 ### HTTP request headers
 
@@ -84,10 +84,10 @@ Delete an API key
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: admin_api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
+// Configure API key authorization: admin_apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\ApiKeyApi(
@@ -119,7 +119,7 @@ void (empty response body)
 
 ### Authorization
 
-[admin_api_key](../../README.md#admin_api_key)
+[admin_apikey](../../README.md#admin_apikey)
 
 ### HTTP request headers
 
@@ -145,10 +145,10 @@ Fetch all API keys associated with an Organisation
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: admin_api_key
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apiKey', 'YOUR_API_KEY');
+// Configure API key authorization: admin_apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apiKey', 'Bearer');
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
 
 
 $apiInstance = new HiCo\EventManagerClient\Api\ApiKeyApi(
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[admin_api_key](../../README.md#admin_api_key)
+[admin_apikey](../../README.md#admin_apikey)
 
 ### HTTP request headers
 
