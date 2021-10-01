@@ -1,6 +1,6 @@
 <?php
 /**
- * OrganisationApi
+ * AggregateApi
  * PHP version 7.3
  *
  * @category Class
@@ -40,14 +40,14 @@ use HiCo\EventManagerClient\HeaderSelector;
 use HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * OrganisationApi Class Doc Comment
+ * AggregateApi Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class OrganisationApi
+class AggregateApi
 {
     /**
      * @var ClientInterface
@@ -116,36 +116,40 @@ class OrganisationApi
     }
 
     /**
-     * Operation createOrganisationIndex
+     * Operation getAggregateEvents
      *
-     * Create the organisation tables
+     * Aggregate all events from a specific job
      *
      * @param  string $organisationId organisationId (required)
+     * @param  string $streamId streamId (required)
+     * @param  string $jobId jobId (required)
      *
      * @throws \HiCo\EventManagerClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HiCo\EventManagerClient\Model\SyncResponse
+     * @return \HiCo\EventManagerClient\Model\AsyncResponse
      */
-    public function createOrganisationIndex($organisationId)
+    public function getAggregateEvents($organisationId, $streamId, $jobId)
     {
-        list($response) = $this->createOrganisationIndexWithHttpInfo($organisationId);
+        list($response) = $this->getAggregateEventsWithHttpInfo($organisationId, $streamId, $jobId);
         return $response;
     }
 
     /**
-     * Operation createOrganisationIndexWithHttpInfo
+     * Operation getAggregateEventsWithHttpInfo
      *
-     * Create the organisation tables
+     * Aggregate all events from a specific job
      *
      * @param  string $organisationId (required)
+     * @param  string $streamId (required)
+     * @param  string $jobId (required)
      *
      * @throws \HiCo\EventManagerClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HiCo\EventManagerClient\Model\SyncResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HiCo\EventManagerClient\Model\AsyncResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOrganisationIndexWithHttpInfo($organisationId)
+    public function getAggregateEventsWithHttpInfo($organisationId, $streamId, $jobId)
     {
-        $request = $this->createOrganisationIndexRequest($organisationId);
+        $request = $this->getAggregateEventsRequest($organisationId, $streamId, $jobId);
 
         try {
             $options = $this->createHttpClientOption();
@@ -176,21 +180,21 @@ class OrganisationApi
             }
 
             switch($statusCode) {
-                case 200:
-                    if ('\HiCo\EventManagerClient\Model\SyncResponse' === '\SplFileObject') {
+                case 202:
+                    if ('\HiCo\EventManagerClient\Model\AsyncResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HiCo\EventManagerClient\Model\SyncResponse', []),
+                        ObjectSerializer::deserialize($content, '\HiCo\EventManagerClient\Model\AsyncResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HiCo\EventManagerClient\Model\SyncResponse';
+            $returnType = '\HiCo\EventManagerClient\Model\AsyncResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -205,10 +209,10 @@ class OrganisationApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HiCo\EventManagerClient\Model\SyncResponse',
+                        '\HiCo\EventManagerClient\Model\AsyncResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -219,18 +223,20 @@ class OrganisationApi
     }
 
     /**
-     * Operation createOrganisationIndexAsync
+     * Operation getAggregateEventsAsync
      *
-     * Create the organisation tables
+     * Aggregate all events from a specific job
      *
      * @param  string $organisationId (required)
+     * @param  string $streamId (required)
+     * @param  string $jobId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrganisationIndexAsync($organisationId)
+    public function getAggregateEventsAsync($organisationId, $streamId, $jobId)
     {
-        return $this->createOrganisationIndexAsyncWithHttpInfo($organisationId)
+        return $this->getAggregateEventsAsyncWithHttpInfo($organisationId, $streamId, $jobId)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -239,19 +245,21 @@ class OrganisationApi
     }
 
     /**
-     * Operation createOrganisationIndexAsyncWithHttpInfo
+     * Operation getAggregateEventsAsyncWithHttpInfo
      *
-     * Create the organisation tables
+     * Aggregate all events from a specific job
      *
      * @param  string $organisationId (required)
+     * @param  string $streamId (required)
+     * @param  string $jobId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrganisationIndexAsyncWithHttpInfo($organisationId)
+    public function getAggregateEventsAsyncWithHttpInfo($organisationId, $streamId, $jobId)
     {
-        $returnType = '\HiCo\EventManagerClient\Model\SyncResponse';
-        $request = $this->createOrganisationIndexRequest($organisationId);
+        $returnType = '\HiCo\EventManagerClient\Model\AsyncResponse';
+        $request = $this->getAggregateEventsRequest($organisationId, $streamId, $jobId);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -287,23 +295,37 @@ class OrganisationApi
     }
 
     /**
-     * Create request for operation 'createOrganisationIndex'
+     * Create request for operation 'getAggregateEvents'
      *
      * @param  string $organisationId (required)
+     * @param  string $streamId (required)
+     * @param  string $jobId (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createOrganisationIndexRequest($organisationId)
+    public function getAggregateEventsRequest($organisationId, $streamId, $jobId)
     {
         // verify the required parameter 'organisationId' is set
         if ($organisationId === null || (is_array($organisationId) && count($organisationId) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $organisationId when calling createOrganisationIndex'
+                'Missing the required parameter $organisationId when calling getAggregateEvents'
+            );
+        }
+        // verify the required parameter 'streamId' is set
+        if ($streamId === null || (is_array($streamId) && count($streamId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $streamId when calling getAggregateEvents'
+            );
+        }
+        // verify the required parameter 'jobId' is set
+        if ($jobId === null || (is_array($jobId) && count($jobId) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $jobId when calling getAggregateEvents'
             );
         }
 
-        $resourcePath = '/event_manager/organisation/{organisation_id}/index';
+        $resourcePath = '/event_manager/aggregate_events/{organisation_id}/{stream_id}/{job_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -317,6 +339,22 @@ class OrganisationApi
             $resourcePath = str_replace(
                 '{' . 'organisation_id' . '}',
                 ObjectSerializer::toPathValue($organisationId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($streamId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'stream_id' . '}',
+                ObjectSerializer::toPathValue($streamId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($jobId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'job_id' . '}',
+                ObjectSerializer::toPathValue($jobId),
                 $resourcePath
             );
         }
@@ -377,7 +415,7 @@ class OrganisationApi
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

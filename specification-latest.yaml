@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.7
+  version: 1.0.8
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -26,6 +26,8 @@ tags:
     description: Operations about organisations
   - name: ApiKey
     description: Operations about API Keys
+  - name: Aggregate
+    description: Operations about Aggregation
   - name: Health
     description: API Status check
 
@@ -671,7 +673,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiKeyList'
-
+  /event_manager/aggregate_events/{organisation_id}/{stream_id}/{job_id}:
+    get:
+      security:
+        - admin_apikey: []
+      tags:
+        - Aggregate
+      summary: Aggregate all events from a specific job
+      operationId: getAggregateEvents
+      parameters:
+        - name: "organisation_id"
+          in: "path"
+          required: true
+          schema:
+            type: string
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        - name: "stream_id"
+          in: "path"
+          required: true
+          schema:
+            type: string
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        - name: "job_id"
+          in: "path"
+          required: true
+          schema:
+            type: string
+          example: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        '202':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
   /event_manager/health:
     get:
       tags:
@@ -705,8 +740,10 @@ components:
       properties:
         id:
           type: string
+          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
         message:
           type: string
+          example: 'Operation accepted'
     SyncResponse:
       type: object
       properties:
