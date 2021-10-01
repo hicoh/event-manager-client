@@ -22,7 +22,7 @@ tag:
 	@echo "============ Tag creation ============"
 	git tag -a "v$(PACKAGE_VERSION)" -m "Release v$(PACKAGE_VERSION)"
 
-build: copy checkout release generate
+build: checkout copy release generate
 	@echo "============ Release building  ============"
 	git add .
 	git commit -m "Release v$(PACKAGE_VERSION)"

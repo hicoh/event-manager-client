@@ -3,6 +3,7 @@
 .travis.yml
 README.md
 composer.json
+docs/Api/AggregateApi.md
 docs/Api/ApiKeyApi.md
 docs/Api/EventApi.md
 docs/Api/EventEntityApi.md
@@ -60,6 +61,7 @@ src/Model/UpdateEventEntityRequest.php
 src/Model/UpdateEventRequest.php
 src/Model/UpdateJobRequest.php
 src/ObjectSerializer.php
+src/Service/AggregateApi.php
 src/Service/ApiKeyApi.php
 src/Service/EventApi.php
 src/Service/EventEntityApi.php
@@ -68,3 +70,4 @@ src/Service/JobApi.php
 src/Service/OrganisationApi.php
 src/Service/StreamApi.php
 src/Service/WebhookApi.php
+test/Api/AggregateApiTest.php
