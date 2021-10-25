@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.8
+  version: 1.0.9
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -434,6 +434,13 @@ paths:
         - Event
       summary: Replicate Event
       operationId: replicateEvent
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         $ref: '#/components/requestBodies/ReplicateEvent'
       responses:
@@ -975,9 +982,14 @@ components:
     ReplicateEventRequest:
       type: object
       required:
-        - event_id
+        - original_event_id
+        - job_id
       properties:
-        event_id:
+        job_id:
+          type: string
+          format: uuid
+          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
+        original_event_id:
           type: string
           example: '60e5b1b405b1e2db6ebd3bee'
         payload_in:
