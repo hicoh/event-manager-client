@@ -5,51 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="adf43d1d-19d2-4210-8711-d1a2f2e6334d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Api/ApiKeyApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Api/ApiKeyApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Api/EventApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Api/EventApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Api/EventEntityApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Api/EventEntityApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Api/HealthApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Api/HealthApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Api/JobApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Api/JobApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Api/OrganisationApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Api/OrganisationApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Api/StreamApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Api/StreamApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Api/WebhookApi.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Api/WebhookApi.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Model/ScheduleConfiguration.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Model/ScheduleConfiguration.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specification-latest.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/specification-latest.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ApiException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApiException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HeaderSelector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/HeaderSelector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ApiKeyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ApiKeyRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ApiKeyResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ApiKeyResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/AsyncResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/AsyncResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ErrorResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ErrorResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/FullApiKey.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/FullApiKey.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Health.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Health.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Job.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Job.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/JobRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/JobRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/JobScheduleRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/JobScheduleRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ModelInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ModelInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/PatchSyncResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PatchSyncResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/RedriveEventRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/RedriveEventRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ReplicateEventRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ReplicateEventRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ReplicateJobRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ReplicateJobRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ReplicateWebhook.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ReplicateWebhook.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ScheduleConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ScheduleConfiguration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/ScheduleConfigurationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ScheduleConfigurationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/SyncResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SyncResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/UpdateEventEntityRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UpdateEventEntityRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/UpdateEventRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UpdateEventRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/UpdateJobRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/UpdateJobRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ObjectSerializer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ObjectSerializer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/ApiKeyApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/ApiKeyApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/EventApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/EventApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/EventEntityApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/EventEntityApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/HealthApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/HealthApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/JobApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/JobApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/OrganisationApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/OrganisationApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/StreamApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/StreamApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/WebhookApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/WebhookApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +34,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/config.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Service/ApiKeyApi.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Makefile" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Service/ApiKeyApi.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupGrunt">
@@ -96,6 +52,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -132,6 +92,7 @@
       <workItem from="1631095552651" duration="738000" />
       <workItem from="1631542345052" duration="1371000" />
       <workItem from="1631603729718" duration="2073000" />
+      <workItem from="1634809135635" duration="367000" />
     </task>
     <servers />
   </component>
@@ -148,5 +109,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

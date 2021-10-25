@@ -70,4 +70,3 @@ src/Service/JobApi.php
 src/Service/OrganisationApi.php
 src/Service/StreamApi.php
 src/Service/WebhookApi.php
-test/Api/AggregateApiTest.php

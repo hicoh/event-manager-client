@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 ## `replicateEvent()`
 
 ```php
-replicateEvent($replicateEventRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+replicateEvent($organisationId, $replicateEventRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Replicate Event
@@ -230,10 +230,11 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
     new GuzzleHttp\Client(),
     $config
 );
+$organisationId = 'organisationId_example'; // string
 $replicateEventRequest = new \HiCo\EventManagerClient\Model\ReplicateEventRequest(); // \HiCo\EventManagerClient\Model\ReplicateEventRequest
 
 try {
-    $result = $apiInstance->replicateEvent($replicateEventRequest);
+    $result = $apiInstance->replicateEvent($organisationId, $replicateEventRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventApi->replicateEvent: ', $e->getMessage(), PHP_EOL;
@@ -244,6 +245,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
  **replicateEventRequest** | [**\HiCo\EventManagerClient\Model\ReplicateEventRequest**](../Model/ReplicateEventRequest.md)|  | [optional]
 
 ### Return type
