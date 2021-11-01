@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.9
+  version: 1.0.10
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -428,6 +428,32 @@ paths:
               examples:
                 SuccessfulAsyncResponse:
                   $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/child_event:
+    patch:
+      tags:
+        - Event
+      summary: Update Child Event via the Parent Event ID and the entity name
+      operationId: updateChildEvent
+      requestBody:
+        description: The parent ID and entity name identify the child event, the other fields will be updated on that event
+        required: true
+        content:
+          array:
+            schema:
+              $ref: "#/components/schemas/UpdateChildEventRequest"
+            examples:
+              UpdateStatusRequest:
+                $ref: "#/components/examples/UpdateChildEventRequest"
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponseWithoutId"
   /event_manager/event/replicate:
     post:
       tags:
@@ -922,6 +948,34 @@ components:
         destination_parent_id:
           type: string
           example: '1234567890'
+    UpdateChildEventRequest:
+      type: object
+      required:
+        - parent_id
+        - entity_name
+        - status
+        - message
+        - destination_id
+        - destination_parent_id
+      properties:
+        parent_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        entity_name:
+          type: string
+          example: '#1001'
+        status:
+          type: string
+          example: 'OK'
+        message:
+          type: string
+          example: 'The event has been sent OK to destination system'
+        destination_id:
+          type: string
+          example: '1234567890'
+        destination_parent_id:
+          type: string
+          example: '1234567890'
     UpdateEventEntityRequest:
       type: object
       required:
@@ -1140,6 +1194,13 @@ components:
         status: 'OK'
         message: 'Event was sent to destination system'
         destination_id: 'DESTINATION_ID OR EMPTY'
+    UpdateChildEventRequest:
+      value:
+        parent_id: '2455b1b405b1e2db6ebd3321'
+        entity_name: '#1001'
+        status: 'OK'
+        message: 'Event was sent to destination system'
+        destination_id: 'DESTINATION_ID OR EMPTY'
     UpdateEventEntityRequest:
       value:
         id: '2455b1b405b1e2db6ebd3321'
@@ -1154,6 +1215,9 @@ components:
         id: '60e5b1b405b1e2db6ebd3bee'
         message: 'Operation is accepted. To get an update use the request.'
         request: '/job/60e5b1b405b1e2db6ebd3bee'
+    SuccessfulAsyncResponseWithoutId:
+      value:
+        message: 'Operation is accepted.'
     SuccessfulSyncResponse:
       value:
         message: 'Operation is accepted.'

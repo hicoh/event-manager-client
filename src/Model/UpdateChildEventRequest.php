@@ -1,6 +1,6 @@
 <?php
 /**
- * ReplicateWebhook
+ * UpdateChildEventRequest
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * ReplicateWebhook Class Doc Comment
+ * UpdateChildEventRequest Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
@@ -43,7 +43,7 @@ use \HiCo\EventManagerClient\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateChildEventRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ReplicateWebhook';
+    protected static $openAPIModelName = 'UpdateChildEventRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,12 @@ class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'jobId' => 'string'
+        'parentId' => 'string',
+        'entityName' => 'string',
+        'status' => 'string',
+        'message' => 'string',
+        'destinationId' => 'string',
+        'destinationParentId' => 'string'
     ];
 
     /**
@@ -71,7 +76,12 @@ class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'jobId' => null
+        'parentId' => null,
+        'entityName' => null,
+        'status' => null,
+        'message' => null,
+        'destinationId' => null,
+        'destinationParentId' => null
     ];
 
     /**
@@ -101,7 +111,12 @@ class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'jobId' => 'job_id'
+        'parentId' => 'parent_id',
+        'entityName' => 'entity_name',
+        'status' => 'status',
+        'message' => 'message',
+        'destinationId' => 'destination_id',
+        'destinationParentId' => 'destination_parent_id'
     ];
 
     /**
@@ -110,7 +125,12 @@ class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'jobId' => 'setJobId'
+        'parentId' => 'setParentId',
+        'entityName' => 'setEntityName',
+        'status' => 'setStatus',
+        'message' => 'setMessage',
+        'destinationId' => 'setDestinationId',
+        'destinationParentId' => 'setDestinationParentId'
     ];
 
     /**
@@ -119,7 +139,12 @@ class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'jobId' => 'getJobId'
+        'parentId' => 'getParentId',
+        'entityName' => 'getEntityName',
+        'status' => 'getStatus',
+        'message' => 'getMessage',
+        'destinationId' => 'getDestinationId',
+        'destinationParentId' => 'getDestinationParentId'
     ];
 
     /**
@@ -179,7 +204,12 @@ class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['jobId'] = $data['jobId'] ?? null;
+        $this->container['parentId'] = $data['parentId'] ?? null;
+        $this->container['entityName'] = $data['entityName'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['message'] = $data['message'] ?? null;
+        $this->container['destinationId'] = $data['destinationId'] ?? null;
+        $this->container['destinationParentId'] = $data['destinationParentId'] ?? null;
     }
 
     /**
@@ -191,8 +221,23 @@ class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['jobId'] === null) {
-            $invalidProperties[] = "'jobId' can't be null";
+        if ($this->container['parentId'] === null) {
+            $invalidProperties[] = "'parentId' can't be null";
+        }
+        if ($this->container['entityName'] === null) {
+            $invalidProperties[] = "'entityName' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['destinationId'] === null) {
+            $invalidProperties[] = "'destinationId' can't be null";
+        }
+        if ($this->container['destinationParentId'] === null) {
+            $invalidProperties[] = "'destinationParentId' can't be null";
         }
         return $invalidProperties;
     }
@@ -210,25 +255,145 @@ class ReplicateWebhook implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets jobId
+     * Gets parentId
      *
      * @return string
      */
-    public function getJobId()
+    public function getParentId()
     {
-        return $this->container['jobId'];
+        return $this->container['parentId'];
     }
 
     /**
-     * Sets jobId
+     * Sets parentId
      *
-     * @param string $jobId jobId
+     * @param string $parentId parentId
      *
      * @return self
      */
-    public function setJobId($jobId)
+    public function setParentId($parentId)
     {
-        $this->container['jobId'] = $jobId;
+        $this->container['parentId'] = $parentId;
+
+        return $this;
+    }
+
+    /**
+     * Gets entityName
+     *
+     * @return string
+     */
+    public function getEntityName()
+    {
+        return $this->container['entityName'];
+    }
+
+    /**
+     * Sets entityName
+     *
+     * @param string $entityName entityName
+     *
+     * @return self
+     */
+    public function setEntityName($entityName)
+    {
+        $this->container['entityName'] = $entityName;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets destinationId
+     *
+     * @return string
+     */
+    public function getDestinationId()
+    {
+        return $this->container['destinationId'];
+    }
+
+    /**
+     * Sets destinationId
+     *
+     * @param string $destinationId destinationId
+     *
+     * @return self
+     */
+    public function setDestinationId($destinationId)
+    {
+        $this->container['destinationId'] = $destinationId;
+
+        return $this;
+    }
+
+    /**
+     * Gets destinationParentId
+     *
+     * @return string
+     */
+    public function getDestinationParentId()
+    {
+        return $this->container['destinationParentId'];
+    }
+
+    /**
+     * Sets destinationParentId
+     *
+     * @param string $destinationParentId destinationParentId
+     *
+     * @return self
+     */
+    public function setDestinationParentId($destinationParentId)
+    {
+        $this->container['destinationParentId'] = $destinationParentId;
 
         return $this;
     }
