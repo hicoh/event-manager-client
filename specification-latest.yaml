@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.11
+  version: 1.0.12
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -434,6 +434,13 @@ paths:
         - Event
       summary: Update Child Event via the Parent Event ID and the entity name
       operationId: updateChildEvent
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         description: The parent ID and entity name identify the child event, the other fields will be updated on that event
         required: true
