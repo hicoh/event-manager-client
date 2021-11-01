@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.10
+  version: 1.0.11
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -956,7 +956,6 @@ components:
         - status
         - message
         - destination_id
-        - destination_parent_id
       properties:
         parent_id:
           type: string
@@ -971,9 +970,6 @@ components:
           type: string
           example: 'The event has been sent OK to destination system'
         destination_id:
-          type: string
-          example: '1234567890'
-        destination_parent_id:
           type: string
           example: '1234567890'
     UpdateEventEntityRequest:
