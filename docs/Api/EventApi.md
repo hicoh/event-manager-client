@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 ## `updateChildEvent()`
 
 ```php
-updateChildEvent($updateChildEventRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+updateChildEvent($updateChildEventRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Update Child Event via the Parent Event ID and the entity name
@@ -294,9 +294,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
     $config
 );
 $updateChildEventRequest = new \HiCo\EventManagerClient\Model\UpdateChildEventRequest(); // \HiCo\EventManagerClient\Model\UpdateChildEventRequest | The parent ID and entity name identify the child event, the other fields will be updated on that event
+$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->updateChildEvent($updateChildEventRequest);
+    $result = $apiInstance->updateChildEvent($updateChildEventRequest, $organisationId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventApi->updateChildEvent: ', $e->getMessage(), PHP_EOL;
@@ -308,6 +309,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateChildEventRequest** | [**\HiCo\EventManagerClient\Model\UpdateChildEventRequest**](../Model/UpdateChildEventRequest.md)| The parent ID and entity name identify the child event, the other fields will be updated on that event |
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
 
 ### Return type
 
