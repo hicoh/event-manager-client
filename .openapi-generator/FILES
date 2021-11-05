@@ -74,4 +74,3 @@ src/Service/KeyApi.php
 src/Service/OrganisationApi.php
 src/Service/StreamApi.php
 src/Service/WebhookApi.php
-test/Api/KeyApiTest.php
