@@ -1,6 +1,6 @@
 <?php
 /**
- * OrganisationApi
+ * KeyApi
  * PHP version 7.3
  *
  * @category Class
@@ -40,14 +40,14 @@ use HiCo\EventManagerClient\HeaderSelector;
 use HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * OrganisationApi Class Doc Comment
+ * KeyApi Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class OrganisationApi
+class KeyApi
 {
     /**
      * @var ClientInterface
@@ -116,36 +116,36 @@ class OrganisationApi
     }
 
     /**
-     * Operation createOrganisationIndex
+     * Operation getKey
      *
-     * Create the organisation tables
+     * Fetch key
      *
-     * @param  string $organisationId organisationId (required)
+     * @param  string $id id (required)
      *
      * @throws \HiCo\EventManagerClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \HiCo\EventManagerClient\Model\SyncResponse
+     * @return object
      */
-    public function createOrganisationIndex($organisationId)
+    public function getKey($id)
     {
-        list($response) = $this->createOrganisationIndexWithHttpInfo($organisationId);
+        list($response) = $this->getKeyWithHttpInfo($id);
         return $response;
     }
 
     /**
-     * Operation createOrganisationIndexWithHttpInfo
+     * Operation getKeyWithHttpInfo
      *
-     * Create the organisation tables
+     * Fetch key
      *
-     * @param  string $organisationId (required)
+     * @param  string $id (required)
      *
      * @throws \HiCo\EventManagerClient\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \HiCo\EventManagerClient\Model\SyncResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOrganisationIndexWithHttpInfo($organisationId)
+    public function getKeyWithHttpInfo($id)
     {
-        $request = $this->createOrganisationIndexRequest($organisationId);
+        $request = $this->getKeyRequest($id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -177,20 +177,20 @@ class OrganisationApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\HiCo\EventManagerClient\Model\SyncResponse' === '\SplFileObject') {
+                    if ('object' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\HiCo\EventManagerClient\Model\SyncResponse', []),
+                        ObjectSerializer::deserialize($content, 'object', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\HiCo\EventManagerClient\Model\SyncResponse';
+            $returnType = 'object';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -208,7 +208,7 @@ class OrganisationApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\HiCo\EventManagerClient\Model\SyncResponse',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -219,18 +219,18 @@ class OrganisationApi
     }
 
     /**
-     * Operation createOrganisationIndexAsync
+     * Operation getKeyAsync
      *
-     * Create the organisation tables
+     * Fetch key
      *
-     * @param  string $organisationId (required)
+     * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrganisationIndexAsync($organisationId)
+    public function getKeyAsync($id)
     {
-        return $this->createOrganisationIndexAsyncWithHttpInfo($organisationId)
+        return $this->getKeyAsyncWithHttpInfo($id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -239,19 +239,19 @@ class OrganisationApi
     }
 
     /**
-     * Operation createOrganisationIndexAsyncWithHttpInfo
+     * Operation getKeyAsyncWithHttpInfo
      *
-     * Create the organisation tables
+     * Fetch key
      *
-     * @param  string $organisationId (required)
+     * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrganisationIndexAsyncWithHttpInfo($organisationId)
+    public function getKeyAsyncWithHttpInfo($id)
     {
-        $returnType = '\HiCo\EventManagerClient\Model\SyncResponse';
-        $request = $this->createOrganisationIndexRequest($organisationId);
+        $returnType = 'object';
+        $request = $this->getKeyRequest($id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -287,23 +287,23 @@ class OrganisationApi
     }
 
     /**
-     * Create request for operation 'createOrganisationIndex'
+     * Create request for operation 'getKey'
      *
-     * @param  string $organisationId (required)
+     * @param  string $id (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createOrganisationIndexRequest($organisationId)
+    public function getKeyRequest($id)
     {
-        // verify the required parameter 'organisationId' is set
-        if ($organisationId === null || (is_array($organisationId) && count($organisationId) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $organisationId when calling createOrganisationIndex'
+                'Missing the required parameter $id when calling getKey'
             );
         }
 
-        $resourcePath = '/event_manager/organisation/{organisation_id}/index';
+        $resourcePath = '/event_manager/key/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -313,10 +313,10 @@ class OrganisationApi
 
 
         // path params
-        if ($organisationId !== null) {
+        if ($id !== null) {
             $resourcePath = str_replace(
-                '{' . 'organisation_id' . '}',
-                ObjectSerializer::toPathValue($organisationId),
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
                 $resourcePath
             );
         }
@@ -377,7 +377,7 @@ class OrganisationApi
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
-            'POST',
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
