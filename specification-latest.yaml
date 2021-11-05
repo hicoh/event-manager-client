@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.12
+  version: 1.0.13
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -26,6 +26,8 @@ tags:
     description: Operations about organisations
   - name: ApiKey
     description: Operations about API Keys
+  - name: Key
+    description: Operations about Keys
   - name: Aggregate
     description: Operations about Aggregation
   - name: Health
@@ -713,6 +715,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiKeyList'
+  /event_manager/key/{id}:
+    get:
+      tags:
+        - Key
+      summary: Fetch key
+      operationId: getKey
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: string
+          example: "123e4567-e89b-12d3-a456-426614174000"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyObject'
   /event_manager/aggregate_events/{organisation_id}/{stream_id}/{job_id}:
     get:
       security:
@@ -1126,6 +1148,12 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/FullApiKey'
+    KeyObject:
+      type: object
+      example:
+        id: '1234'
+        name: 'production'
+        expireAt: '2022-01-01'
   requestBodies:
     Job:
       content:

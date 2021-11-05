@@ -9,6 +9,7 @@ docs/Api/EventApi.md
 docs/Api/EventEntityApi.md
 docs/Api/HealthApi.md
 docs/Api/JobApi.md
+docs/Api/KeyApi.md
 docs/Api/OrganisationApi.md
 docs/Api/StreamApi.md
 docs/Api/WebhookApi.md
@@ -69,6 +70,8 @@ src/Service/EventApi.php
 src/Service/EventEntityApi.php
 src/Service/HealthApi.php
 src/Service/JobApi.php
+src/Service/KeyApi.php
 src/Service/OrganisationApi.php
 src/Service/StreamApi.php
 src/Service/WebhookApi.php
+test/Api/KeyApiTest.php
