@@ -1,6 +1,6 @@
 <?php
 /**
- * Event
+ * ReplicateParentAggregateEventRequest
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * Event Class Doc Comment
+ * ReplicateParentAggregateEventRequest Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
@@ -43,7 +43,7 @@ use \HiCo\EventManagerClient\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Event implements ModelInterface, ArrayAccess, \JsonSerializable
+class ReplicateParentAggregateEventRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Event';
+    protected static $openAPIModelName = 'ReplicateParentAggregateEventRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,15 +60,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'streamId' => 'string',
+        'organisationId' => 'string',
         'jobId' => 'string',
-        'payloadInUrl' => 'string',
-        'payloadOutUrl' => 'string',
-        'status' => 'string',
-        'message' => 'string',
-        'createdAt' => 'string',
-        'updatedAt' => 'string'
+        'originalEventId' => 'string'
     ];
 
     /**
@@ -79,15 +73,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'streamId' => null,
-        'jobId' => null,
-        'payloadInUrl' => null,
-        'payloadOutUrl' => null,
-        'status' => null,
-        'message' => null,
-        'createdAt' => null,
-        'updatedAt' => null
+        'organisationId' => 'uuid',
+        'jobId' => 'uuid',
+        'originalEventId' => null
     ];
 
     /**
@@ -117,15 +105,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'streamId' => 'stream_id',
+        'organisationId' => 'organisation_id',
         'jobId' => 'job_id',
-        'payloadInUrl' => 'payload_in_url',
-        'payloadOutUrl' => 'payload_out_url',
-        'status' => 'status',
-        'message' => 'message',
-        'createdAt' => 'created_at',
-        'updatedAt' => 'updated_at'
+        'originalEventId' => 'original_event_id'
     ];
 
     /**
@@ -134,15 +116,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'streamId' => 'setStreamId',
+        'organisationId' => 'setOrganisationId',
         'jobId' => 'setJobId',
-        'payloadInUrl' => 'setPayloadInUrl',
-        'payloadOutUrl' => 'setPayloadOutUrl',
-        'status' => 'setStatus',
-        'message' => 'setMessage',
-        'createdAt' => 'setCreatedAt',
-        'updatedAt' => 'setUpdatedAt'
+        'originalEventId' => 'setOriginalEventId'
     ];
 
     /**
@@ -151,15 +127,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'streamId' => 'getStreamId',
+        'organisationId' => 'getOrganisationId',
         'jobId' => 'getJobId',
-        'payloadInUrl' => 'getPayloadInUrl',
-        'payloadOutUrl' => 'getPayloadOutUrl',
-        'status' => 'getStatus',
-        'message' => 'getMessage',
-        'createdAt' => 'getCreatedAt',
-        'updatedAt' => 'getUpdatedAt'
+        'originalEventId' => 'getOriginalEventId'
     ];
 
     /**
@@ -219,15 +189,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['streamId'] = $data['streamId'] ?? null;
+        $this->container['organisationId'] = $data['organisationId'] ?? null;
         $this->container['jobId'] = $data['jobId'] ?? null;
-        $this->container['payloadInUrl'] = $data['payloadInUrl'] ?? null;
-        $this->container['payloadOutUrl'] = $data['payloadOutUrl'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['createdAt'] = $data['createdAt'] ?? null;
-        $this->container['updatedAt'] = $data['updatedAt'] ?? null;
+        $this->container['originalEventId'] = $data['originalEventId'] ?? null;
     }
 
     /**
@@ -239,6 +203,15 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['organisationId'] === null) {
+            $invalidProperties[] = "'organisationId' can't be null";
+        }
+        if ($this->container['jobId'] === null) {
+            $invalidProperties[] = "'jobId' can't be null";
+        }
+        if ($this->container['originalEventId'] === null) {
+            $invalidProperties[] = "'originalEventId' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -255,49 +228,25 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets organisationId
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getOrganisationId()
     {
-        return $this->container['id'];
+        return $this->container['organisationId'];
     }
 
     /**
-     * Sets id
+     * Sets organisationId
      *
-     * @param string|null $id id
+     * @param string $organisationId organisationId
      *
      * @return self
      */
-    public function setId($id)
+    public function setOrganisationId($organisationId)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets streamId
-     *
-     * @return string|null
-     */
-    public function getStreamId()
-    {
-        return $this->container['streamId'];
-    }
-
-    /**
-     * Sets streamId
-     *
-     * @param string|null $streamId streamId
-     *
-     * @return self
-     */
-    public function setStreamId($streamId)
-    {
-        $this->container['streamId'] = $streamId;
+        $this->container['organisationId'] = $organisationId;
 
         return $this;
     }
@@ -305,7 +254,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets jobId
      *
-     * @return string|null
+     * @return string
      */
     public function getJobId()
     {
@@ -315,7 +264,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets jobId
      *
-     * @param string|null $jobId jobId
+     * @param string $jobId jobId
      *
      * @return self
      */
@@ -327,145 +276,25 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets payloadInUrl
+     * Gets originalEventId
      *
-     * @return string|null
+     * @return string
      */
-    public function getPayloadInUrl()
+    public function getOriginalEventId()
     {
-        return $this->container['payloadInUrl'];
+        return $this->container['originalEventId'];
     }
 
     /**
-     * Sets payloadInUrl
+     * Sets originalEventId
      *
-     * @param string|null $payloadInUrl payloadInUrl
+     * @param string $originalEventId originalEventId
      *
      * @return self
      */
-    public function setPayloadInUrl($payloadInUrl)
+    public function setOriginalEventId($originalEventId)
     {
-        $this->container['payloadInUrl'] = $payloadInUrl;
-
-        return $this;
-    }
-
-    /**
-     * Gets payloadOutUrl
-     *
-     * @return string|null
-     */
-    public function getPayloadOutUrl()
-    {
-        return $this->container['payloadOutUrl'];
-    }
-
-    /**
-     * Sets payloadOutUrl
-     *
-     * @param string|null $payloadOutUrl payloadOutUrl
-     *
-     * @return self
-     */
-    public function setPayloadOutUrl($payloadOutUrl)
-    {
-        $this->container['payloadOutUrl'] = $payloadOutUrl;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets createdAt
-     *
-     * @return string|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['createdAt'];
-    }
-
-    /**
-     * Sets createdAt
-     *
-     * @param string|null $createdAt DD/MM/YYYY hh:mm:ss
-     *
-     * @return self
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->container['createdAt'] = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Gets updatedAt
-     *
-     * @return string|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updatedAt'];
-    }
-
-    /**
-     * Sets updatedAt
-     *
-     * @param string|null $updatedAt DD/MM/YYYY hh:mm:ss
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->container['updatedAt'] = $updatedAt;
+        $this->container['originalEventId'] = $originalEventId;
 
         return $this;
     }

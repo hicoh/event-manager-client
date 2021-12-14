@@ -27,6 +27,7 @@ docs/Model/PatchSyncResponse.md
 docs/Model/RedriveEventRequest.md
 docs/Model/ReplicateEventRequest.md
 docs/Model/ReplicateJobRequest.md
+docs/Model/ReplicateParentAggregateEventRequest.md
 docs/Model/ReplicateWebhook.md
 docs/Model/ScheduleConfiguration.md
 docs/Model/ScheduleConfigurationRequest.md
@@ -55,6 +56,7 @@ src/Model/PatchSyncResponse.php
 src/Model/RedriveEventRequest.php
 src/Model/ReplicateEventRequest.php
 src/Model/ReplicateJobRequest.php
+src/Model/ReplicateParentAggregateEventRequest.php
 src/Model/ReplicateWebhook.php
 src/Model/ScheduleConfiguration.php
 src/Model/ScheduleConfigurationRequest.php
@@ -74,3 +76,4 @@ src/Service/KeyApi.php
 src/Service/OrganisationApi.php
 src/Service/StreamApi.php
 src/Service/WebhookApi.php
+test/Model/ReplicateParentAggregateEventRequestTest.php
