@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.15
+  version: 1.0.16
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -131,6 +131,8 @@ paths:
         - Job
       summary: Create a new job
       operationId: createJob
+      requestBody:
+        $ref: '#/components/requestBodies/Job'
       responses:
         202:
           description: Successful operation
@@ -141,8 +143,6 @@ paths:
               examples:
                 SuccessfulAsyncResponse:
                   $ref: "#/components/examples/SuccessfulAsyncResponse"
-      requestBody:
-        $ref: '#/components/requestBodies/Job'
     patch:
       tags:
         - Job
@@ -777,6 +777,13 @@ paths:
         - Aggregate
       summary: Replicate a Parent Aggregate event
       operationId: replicateParentAggregateEvent
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         description: Event Data
         required: true
@@ -786,6 +793,31 @@ paths:
               $ref: '#/components/schemas/ReplicateParentAggregateEventRequest'
       responses:
         '202':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/aggregate_events/replicate_child:
+    post:
+      tags:
+        - Aggregate
+      summary: Replicate Child Aggregate Event
+      operationId: replicateChildAggregateEvent
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
+      requestBody:
+        $ref: '#/components/requestBodies/ReplicateEvent'
+      responses:
+        202:
           description: Request accepted
           content:
             application/json:
@@ -1109,14 +1141,9 @@ components:
     ReplicateParentAggregateEventRequest:
       type: object
       required:
-        - organisation_id
         - original_event_id
         - job_id
       properties:
-        organisation_id:
-          type: string
-          format: uuid
-          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
         job_id:
           type: string
           format: uuid
