@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**organisationId** | **string** |  |
 **jobId** | **string** |  |
 **originalEventId** | **string** |  |
 
