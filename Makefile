@@ -1,14 +1,14 @@
 FILE:=specification-latest.yaml
-PACKAGE_VERSION:=$(shell cat $(FILE) | grep version| tr -d 'version: [[:space:]]')
 
 
 checkout:
 	@echo "============ Checkout master branch ============"
-	git checkout master && git pull
+	#git checkout master && git pull
 
 copy:
 	@echo "============ Copy OpenApi specification from the service folder ============"
 	cp ../public-gateway/api-doc.yaml ./specification-latest.yaml
+	PACKAGE_VERSION=$(shell cat $(FILE) | grep version| tr -d 'version: [[:space:]]')
 
 release:
 	@echo "============ Create release branch ============"
