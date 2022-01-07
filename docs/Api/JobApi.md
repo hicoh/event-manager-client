@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createJob()**](JobApi.md#createJob) | **POST** /event_manager/job | Create a new job
 [**createJobSchedule()**](JobApi.md#createJobSchedule) | **POST** /event_manager/job/schedule | Create a job schedule
+[**deleteJob()**](JobApi.md#deleteJob) | **DELETE** /event_manager/job | Delete jobs
 [**getJobById()**](JobApi.md#getJobById) | **GET** /event_manager/job/{job_id} | Get a job by job id
 [**getJobsBy()**](JobApi.md#getJobsBy) | **GET** /event_manager/job | Get a list of jobs by
 [**replicateJob()**](JobApi.md#replicateJob) | **POST** /event_manager/job/replicate | Replicate job
@@ -126,6 +127,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteJob()`
+
+```php
+deleteJob($id, $streamId, $status, $dueAt): \HiCo\EventManagerClient\Model\SyncResponse
+```
+
+Delete jobs
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
+
+
+$apiInstance = new HiCo\EventManagerClient\Api\JobApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | The job id
+$streamId = 'streamId_example'; // string | The stream id of the job
+$status = 'status_example'; // string | The job status
+$dueAt = 2021/03/21 12:23:22; // string | Jobs filtered by due_at date (due_at=2021/03/21 12:23:22,gte)
+
+try {
+    $result = $apiInstance->deleteJob($id, $streamId, $status, $dueAt);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling JobApi->deleteJob: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| The job id | [optional]
+ **streamId** | **string**| The stream id of the job | [optional]
+ **status** | **string**| The job status | [optional]
+ **dueAt** | **string**| Jobs filtered by due_at date (due_at&#x3D;2021/03/21 12:23:22,gte) | [optional]
+
+### Return type
+
+[**\HiCo\EventManagerClient\Model\SyncResponse**](../Model/SyncResponse.md)
+
+### Authorization
+
+[apikey](../../README.md#apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

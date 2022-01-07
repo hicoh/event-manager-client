@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.18
+  version: 1.0.19
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -168,6 +168,49 @@ paths:
               examples:
                 SuccessfulAsyncResponse:
                   $ref: "#/components/examples/SuccessfulAsyncResponse"
+    delete:
+      tags:
+        - Job
+      summary: Delete jobs
+      operationId: deleteJob
+      parameters:
+        - name: id
+          in: query
+          description: The job id
+          required: false
+          schema:
+            type: string
+        - name: stream_id
+          in: query
+          description: The stream id of the job
+          required: false
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: The job status
+          required: false
+          schema:
+            type: string
+        - name: due_at
+          in: query
+          description: Jobs filtered by due_at date (due_at=2021/03/21 12:23:22,gte)
+          required: false
+          schema:
+            type: string
+            description: 'DD/MM/YYYY hh:mm:ss'
+            example: '2021/03/21 12:23:22'
+      responses:
+        '200':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncResponse'
+              examples:
+                SuccessfulSyncResponse:
+                  $ref: "#/components/examples/SuccessfulSyncResponse"
+
   /event_manager/job/replicate:
     post:
       tags:
