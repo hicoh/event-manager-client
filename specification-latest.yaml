@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.20
+  version: 1.0.21
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -365,6 +365,12 @@ paths:
       summary: Get a Stream Schedule Configuration by Stream Id
       operationId: getScheduleConfiguration
       parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
         - name: stream_id
           in: path
           description: Stream Id
@@ -396,6 +402,12 @@ paths:
       summary: Delete a Stream Schedule Configuration
       operationId: deleteScheduleConfiguration
       parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
         - name: stream_id
           in: path
           description: Stream Id

@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ## `deleteScheduleConfiguration()`
 
 ```php
-deleteScheduleConfiguration($streamId): \HiCo\EventManagerClient\Model\SyncResponse
+deleteScheduleConfiguration($streamId, $organisationId): \HiCo\EventManagerClient\Model\SyncResponse
 ```
 
 Delete a Stream Schedule Configuration
@@ -100,9 +100,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
     $config
 );
 $streamId = 'streamId_example'; // string | Stream Id
+$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->deleteScheduleConfiguration($streamId);
+    $result = $apiInstance->deleteScheduleConfiguration($streamId, $organisationId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StreamApi->deleteScheduleConfiguration: ', $e->getMessage(), PHP_EOL;
@@ -114,6 +115,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **streamId** | **string**| Stream Id |
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
 
 ### Return type
 
@@ -135,7 +137,7 @@ Name | Type | Description  | Notes
 ## `getScheduleConfiguration()`
 
 ```php
-getScheduleConfiguration($streamId): \HiCo\EventManagerClient\Model\ScheduleConfiguration
+getScheduleConfiguration($streamId, $organisationId): \HiCo\EventManagerClient\Model\ScheduleConfiguration
 ```
 
 Get a Stream Schedule Configuration by Stream Id
@@ -160,9 +162,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
     $config
 );
 $streamId = 'streamId_example'; // string | Stream Id
+$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->getScheduleConfiguration($streamId);
+    $result = $apiInstance->getScheduleConfiguration($streamId, $organisationId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StreamApi->getScheduleConfiguration: ', $e->getMessage(), PHP_EOL;
@@ -174,6 +177,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **streamId** | **string**| Stream Id |
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
 
 ### Return type
 
