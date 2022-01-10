@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.19
+  version: 1.0.20
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -174,6 +174,12 @@ paths:
       summary: Delete jobs
       operationId: deleteJob
       parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
         - name: id
           in: query
           description: The job id
@@ -194,7 +200,7 @@ paths:
             type: string
         - name: due_at
           in: query
-          description: Jobs filtered by due_at date (due_at=2021/03/21 12:23:22,gte)
+          description: Delete jobs filtered by due_at date (due_at=2021/03/21 12:23:22,gte)
           required: false
           schema:
             type: string
@@ -283,6 +289,13 @@ paths:
         - Job
       summary: Create a job schedule
       operationId: createJobSchedule
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         $ref: '#/components/requestBodies/JobScheduleRequest'
       responses:
@@ -302,6 +315,13 @@ paths:
         - Stream
       summary: Create a new Stream Schedule Configuration
       operationId: createScheduleConfiguration
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         $ref: '#/components/requestBodies/ScheduleConfigurationRequest'
       responses:
@@ -319,6 +339,13 @@ paths:
         - Stream
       summary: Updates Stream Schedule Configuration option and active attributes.
       operationId: updateScheduleConfigurationAttributes
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         $ref: '#/components/requestBodies/ScheduleConfigurationRequest'
       responses:

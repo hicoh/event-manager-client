@@ -13,7 +13,7 @@ Method | HTTP request | Description
 ## `createScheduleConfiguration()`
 
 ```php
-createScheduleConfiguration($scheduleConfigurationRequest): \HiCo\EventManagerClient\Model\ScheduleConfiguration
+createScheduleConfiguration($organisationId, $scheduleConfigurationRequest): \HiCo\EventManagerClient\Model\ScheduleConfiguration
 ```
 
 Create a new Stream Schedule Configuration
@@ -37,10 +37,11 @@ $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
     new GuzzleHttp\Client(),
     $config
 );
+$organisationId = 'organisationId_example'; // string
 $scheduleConfigurationRequest = new \HiCo\EventManagerClient\Model\ScheduleConfigurationRequest(); // \HiCo\EventManagerClient\Model\ScheduleConfigurationRequest
 
 try {
-    $result = $apiInstance->createScheduleConfiguration($scheduleConfigurationRequest);
+    $result = $apiInstance->createScheduleConfiguration($organisationId, $scheduleConfigurationRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StreamApi->createScheduleConfiguration: ', $e->getMessage(), PHP_EOL;
@@ -51,6 +52,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
  **scheduleConfigurationRequest** | [**\HiCo\EventManagerClient\Model\ScheduleConfigurationRequest**](../Model/ScheduleConfigurationRequest.md)|  | [optional]
 
 ### Return type
@@ -193,7 +195,7 @@ Name | Type | Description  | Notes
 ## `updateScheduleConfigurationAttributes()`
 
 ```php
-updateScheduleConfigurationAttributes($scheduleConfigurationRequest): \HiCo\EventManagerClient\Model\PatchSyncResponse
+updateScheduleConfigurationAttributes($organisationId, $scheduleConfigurationRequest): \HiCo\EventManagerClient\Model\PatchSyncResponse
 ```
 
 Updates Stream Schedule Configuration option and active attributes.
@@ -217,10 +219,11 @@ $apiInstance = new HiCo\EventManagerClient\Api\StreamApi(
     new GuzzleHttp\Client(),
     $config
 );
+$organisationId = 'organisationId_example'; // string
 $scheduleConfigurationRequest = new \HiCo\EventManagerClient\Model\ScheduleConfigurationRequest(); // \HiCo\EventManagerClient\Model\ScheduleConfigurationRequest
 
 try {
-    $result = $apiInstance->updateScheduleConfigurationAttributes($scheduleConfigurationRequest);
+    $result = $apiInstance->updateScheduleConfigurationAttributes($organisationId, $scheduleConfigurationRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StreamApi->updateScheduleConfigurationAttributes: ', $e->getMessage(), PHP_EOL;
@@ -231,6 +234,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
  **scheduleConfigurationRequest** | [**\HiCo\EventManagerClient\Model\ScheduleConfigurationRequest**](../Model/ScheduleConfigurationRequest.md)|  | [optional]
 
 ### Return type

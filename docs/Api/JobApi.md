@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ## `createJobSchedule()`
 
 ```php
-createJobSchedule($jobScheduleRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+createJobSchedule($organisationId, $jobScheduleRequest): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Create a job schedule
@@ -100,10 +100,11 @@ $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
     new GuzzleHttp\Client(),
     $config
 );
+$organisationId = 'organisationId_example'; // string
 $jobScheduleRequest = new \HiCo\EventManagerClient\Model\JobScheduleRequest(); // \HiCo\EventManagerClient\Model\JobScheduleRequest
 
 try {
-    $result = $apiInstance->createJobSchedule($jobScheduleRequest);
+    $result = $apiInstance->createJobSchedule($organisationId, $jobScheduleRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JobApi->createJobSchedule: ', $e->getMessage(), PHP_EOL;
@@ -114,6 +115,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
  **jobScheduleRequest** | [**\HiCo\EventManagerClient\Model\JobScheduleRequest**](../Model/JobScheduleRequest.md)|  | [optional]
 
 ### Return type
@@ -136,7 +138,7 @@ Name | Type | Description  | Notes
 ## `deleteJob()`
 
 ```php
-deleteJob($id, $streamId, $status, $dueAt): \HiCo\EventManagerClient\Model\SyncResponse
+deleteJob($organisationId, $id, $streamId, $status, $dueAt): \HiCo\EventManagerClient\Model\SyncResponse
 ```
 
 Delete jobs
@@ -160,13 +162,14 @@ $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
     new GuzzleHttp\Client(),
     $config
 );
+$organisationId = 'organisationId_example'; // string
 $id = 'id_example'; // string | The job id
 $streamId = 'streamId_example'; // string | The stream id of the job
 $status = 'status_example'; // string | The job status
-$dueAt = 2021/03/21 12:23:22; // string | Jobs filtered by due_at date (due_at=2021/03/21 12:23:22,gte)
+$dueAt = 2021/03/21 12:23:22; // string | Delete jobs filtered by due_at date (due_at=2021/03/21 12:23:22,gte)
 
 try {
-    $result = $apiInstance->deleteJob($id, $streamId, $status, $dueAt);
+    $result = $apiInstance->deleteJob($organisationId, $id, $streamId, $status, $dueAt);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JobApi->deleteJob: ', $e->getMessage(), PHP_EOL;
@@ -177,10 +180,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
  **id** | **string**| The job id | [optional]
  **streamId** | **string**| The stream id of the job | [optional]
  **status** | **string**| The job status | [optional]
- **dueAt** | **string**| Jobs filtered by due_at date (due_at&#x3D;2021/03/21 12:23:22,gte) | [optional]
+ **dueAt** | **string**| Delete jobs filtered by due_at date (due_at&#x3D;2021/03/21 12:23:22,gte) | [optional]
 
 ### Return type
 
