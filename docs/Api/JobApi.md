@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createJob()**](JobApi.md#createJob) | **POST** /event_manager/job | Create a new job
 [**createJobSchedule()**](JobApi.md#createJobSchedule) | **POST** /event_manager/job/schedule | Create a job schedule
+[**createSourceJob()**](JobApi.md#createSourceJob) | **POST** /event_manager/job/source | Trigger a job to be sent to the source
 [**deleteJob()**](JobApi.md#deleteJob) | **DELETE** /event_manager/job | Delete jobs
 [**getJobById()**](JobApi.md#getJobById) | **GET** /event_manager/job/{job_id} | Get a job by job id
 [**getJobsBy()**](JobApi.md#getJobsBy) | **GET** /event_manager/job | Get a list of jobs by
@@ -117,6 +118,68 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organisationId** | [**string**](../Model/.md)|  | [optional]
  **jobScheduleRequest** | [**\HiCo\EventManagerClient\Model\JobScheduleRequest**](../Model/JobScheduleRequest.md)|  | [optional]
+
+### Return type
+
+[**\HiCo\EventManagerClient\Model\AsyncResponse**](../Model/AsyncResponse.md)
+
+### Authorization
+
+[apikey](../../README.md#apikey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createSourceJob()`
+
+```php
+createSourceJob($organisationId, $sourceJobRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+```
+
+Trigger a job to be sent to the source
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
+
+
+$apiInstance = new HiCo\EventManagerClient\Api\JobApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$organisationId = 'organisationId_example'; // string
+$sourceJobRequest = new \HiCo\EventManagerClient\Model\SourceJobRequest(); // \HiCo\EventManagerClient\Model\SourceJobRequest
+
+try {
+    $result = $apiInstance->createSourceJob($organisationId, $sourceJobRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling JobApi->createSourceJob: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **sourceJobRequest** | [**\HiCo\EventManagerClient\Model\SourceJobRequest**](../Model/SourceJobRequest.md)|  | [optional]
 
 ### Return type
 
