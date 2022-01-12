@@ -31,6 +31,7 @@ docs/Model/ReplicateParentAggregateEventRequest.md
 docs/Model/ReplicateWebhook.md
 docs/Model/ScheduleConfiguration.md
 docs/Model/ScheduleConfigurationRequest.md
+docs/Model/SourceJobRequest.md
 docs/Model/SyncResponse.md
 docs/Model/UpdateChildEventRequest.md
 docs/Model/UpdateEventEntityRequest.md
@@ -60,6 +61,7 @@ src/Model/ReplicateParentAggregateEventRequest.php
 src/Model/ReplicateWebhook.php
 src/Model/ScheduleConfiguration.php
 src/Model/ScheduleConfigurationRequest.php
+src/Model/SourceJobRequest.php
 src/Model/SyncResponse.php
 src/Model/UpdateChildEventRequest.php
 src/Model/UpdateEventEntityRequest.php
@@ -76,3 +78,4 @@ src/Service/KeyApi.php
 src/Service/OrganisationApi.php
 src/Service/StreamApi.php
 src/Service/WebhookApi.php
+test/Model/SourceJobRequestTest.php

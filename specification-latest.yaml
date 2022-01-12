@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.21
+  version: 1.0.22
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -298,6 +298,31 @@ paths:
           required: false
       requestBody:
         $ref: '#/components/requestBodies/JobScheduleRequest'
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+  /event_manager/job/source:
+    post:
+      tags:
+        - Job
+      summary: Trigger a job to be sent to the source
+      operationId: createSourceJob
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
+      requestBody:
+        $ref: '#/components/requestBodies/SourceJobRequest'
       responses:
         202:
           description: Request accepted
@@ -1228,6 +1253,20 @@ components:
           type: string
           description: 'DD/MM/YYYY hh:mm:ss'
           example: '2021/03/21 12:23:22'
+    SourceJobRequest:
+      type: object
+      required:
+        - stream_id
+      properties:
+        stream_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        original_job_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        settings:
+          type: string
+          example: '{"stream":{"user":{"additional_settings:["test": true]}}}'
     ReplicateEventRequest:
       type: object
       required:
@@ -1363,6 +1402,11 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/JobScheduleRequest'
+    SourceJobRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SourceJobRequest'
     ApiKeyRequest:
       content:
         application/json:
