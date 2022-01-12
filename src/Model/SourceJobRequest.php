@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorResponse
+ * SourceJobRequest
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * ErrorResponse Class Doc Comment
+ * SourceJobRequest Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
@@ -43,7 +43,7 @@ use \HiCo\EventManagerClient\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SourceJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorResponse';
+    protected static $openAPIModelName = 'SourceJobRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'int',
-        'message' => 'string'
+        'streamId' => 'string',
+        'originalJobId' => 'string',
+        'settings' => 'string'
     ];
 
     /**
@@ -72,8 +73,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'message' => null
+        'streamId' => null,
+        'originalJobId' => null,
+        'settings' => null
     ];
 
     /**
@@ -103,8 +105,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'message' => 'message'
+        'streamId' => 'stream_id',
+        'originalJobId' => 'original_job_id',
+        'settings' => 'settings'
     ];
 
     /**
@@ -113,8 +116,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'message' => 'setMessage'
+        'streamId' => 'setStreamId',
+        'originalJobId' => 'setOriginalJobId',
+        'settings' => 'setSettings'
     ];
 
     /**
@@ -123,8 +127,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'message' => 'getMessage'
+        'streamId' => 'getStreamId',
+        'originalJobId' => 'getOriginalJobId',
+        'settings' => 'getSettings'
     ];
 
     /**
@@ -184,8 +189,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = $data['code'] ?? null;
-        $this->container['message'] = $data['message'] ?? null;
+        $this->container['streamId'] = $data['streamId'] ?? null;
+        $this->container['originalJobId'] = $data['originalJobId'] ?? null;
+        $this->container['settings'] = $data['settings'] ?? null;
     }
 
     /**
@@ -197,6 +203,9 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['streamId'] === null) {
+            $invalidProperties[] = "'streamId' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -213,49 +222,73 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets code
+     * Gets streamId
      *
-     * @return int|null
+     * @return string
      */
-    public function getCode()
+    public function getStreamId()
     {
-        return $this->container['code'];
+        return $this->container['streamId'];
     }
 
     /**
-     * Sets code
+     * Sets streamId
      *
-     * @param int|null $code code
+     * @param string $streamId streamId
      *
      * @return self
      */
-    public function setCode($code)
+    public function setStreamId($streamId)
     {
-        $this->container['code'] = $code;
+        $this->container['streamId'] = $streamId;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets originalJobId
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getOriginalJobId()
     {
-        return $this->container['message'];
+        return $this->container['originalJobId'];
     }
 
     /**
-     * Sets message
+     * Sets originalJobId
      *
-     * @param string|null $message message
+     * @param string|null $originalJobId originalJobId
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setOriginalJobId($originalJobId)
     {
-        $this->container['message'] = $message;
+        $this->container['originalJobId'] = $originalJobId;
+
+        return $this;
+    }
+
+    /**
+     * Gets settings
+     *
+     * @return string|null
+     */
+    public function getSettings()
+    {
+        return $this->container['settings'];
+    }
+
+    /**
+     * Sets settings
+     *
+     * @param string|null $settings settings
+     *
+     * @return self
+     */
+    public function setSettings($settings)
+    {
+        $this->container['settings'] = $settings;
 
         return $this;
     }
