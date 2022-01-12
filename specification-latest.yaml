@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.22
+  version: 1.0.23
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -148,6 +148,13 @@ paths:
         - Job
       summary: Update job
       operationId: updateJob
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         description: The fields to update
         required: true

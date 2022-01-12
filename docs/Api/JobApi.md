@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 ## `updateJob()`
 
 ```php
-updateJob($updateJobRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+updateJob($updateJobRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Update job
@@ -484,9 +484,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\JobApi(
     $config
 );
 $updateJobRequest = new \HiCo\EventManagerClient\Model\UpdateJobRequest(); // \HiCo\EventManagerClient\Model\UpdateJobRequest | The fields to update
+$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->updateJob($updateJobRequest);
+    $result = $apiInstance->updateJob($updateJobRequest, $organisationId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling JobApi->updateJob: ', $e->getMessage(), PHP_EOL;
@@ -498,6 +499,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateJobRequest** | [**\HiCo\EventManagerClient\Model\UpdateJobRequest**](../Model/UpdateJobRequest.md)| The fields to update |
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
 
 ### Return type
 
