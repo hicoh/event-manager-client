@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 ## `replicateDynamicWebhook()`
 
 ```php
-replicateDynamicWebhook($replicateWebhook): \HiCo\EventManagerClient\Model\AsyncResponse
+replicateDynamicWebhook($replicateWebhook, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Replicate Dynamic Webhook
@@ -156,9 +156,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     new GuzzleHttp\Client()
 );
 $replicateWebhook = new \HiCo\EventManagerClient\Model\ReplicateWebhook(); // \HiCo\EventManagerClient\Model\ReplicateWebhook | Job Data
+$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->replicateDynamicWebhook($replicateWebhook);
+    $result = $apiInstance->replicateDynamicWebhook($replicateWebhook, $organisationId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->replicateDynamicWebhook: ', $e->getMessage(), PHP_EOL;
@@ -170,6 +171,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **replicateWebhook** | [**\HiCo\EventManagerClient\Model\ReplicateWebhook**](../Model/ReplicateWebhook.md)| Job Data |
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
 
 ### Return type
 
@@ -191,7 +193,7 @@ No authorization required
 ## `replicateStaticWebhook()`
 
 ```php
-replicateStaticWebhook($replicateWebhook): \HiCo\EventManagerClient\Model\AsyncResponse
+replicateStaticWebhook($replicateWebhook, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Replicate Static Webhook
@@ -210,9 +212,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     new GuzzleHttp\Client()
 );
 $replicateWebhook = new \HiCo\EventManagerClient\Model\ReplicateWebhook(); // \HiCo\EventManagerClient\Model\ReplicateWebhook | Job Data
+$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->replicateStaticWebhook($replicateWebhook);
+    $result = $apiInstance->replicateStaticWebhook($replicateWebhook, $organisationId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->replicateStaticWebhook: ', $e->getMessage(), PHP_EOL;
@@ -224,6 +227,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **replicateWebhook** | [**\HiCo\EventManagerClient\Model\ReplicateWebhook**](../Model/ReplicateWebhook.md)| Job Data |
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
 
 ### Return type
 
