@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getEventById()**](EventApi.md#getEventById) | **GET** /event_manager/event/{event_id} | Get an event by event id
 [**getEventsBy()**](EventApi.md#getEventsBy) | **GET** /event_manager/event | Get a list of events by
-[**redriveEvent()**](EventApi.md#redriveEvent) | **POST** /event_manager/event/redrive | Redrive Event
 [**replicateEvent()**](EventApi.md#replicateEvent) | **POST** /event_manager/event/replicate | Replicate Event
 [**updateChildEvent()**](EventApi.md#updateChildEvent) | **PATCH** /event_manager/child_event | Update Child Event via the Parent Event ID and the entity name
 [**updateEvent()**](EventApi.md#updateEvent) | **PATCH** /event_manager/event | Update Event
@@ -138,66 +137,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `redriveEvent()`
-
-```php
-redriveEvent($redriveEventRequest): \HiCo\EventManagerClient\Model\AsyncResponse
-```
-
-Redrive Event
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: apikey
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
-
-
-$apiInstance = new HiCo\EventManagerClient\Api\EventApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$redriveEventRequest = new \HiCo\EventManagerClient\Model\RedriveEventRequest(); // \HiCo\EventManagerClient\Model\RedriveEventRequest | The event to redrive
-
-try {
-    $result = $apiInstance->redriveEvent($redriveEventRequest);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling EventApi->redriveEvent: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **redriveEventRequest** | [**\HiCo\EventManagerClient\Model\RedriveEventRequest**](../Model/RedriveEventRequest.md)| The event to redrive |
-
-### Return type
-
-[**\HiCo\EventManagerClient\Model\AsyncResponse**](../Model/AsyncResponse.md)
-
-### Authorization
-
-[apikey](../../README.md#apikey)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
