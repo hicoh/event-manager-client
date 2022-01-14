@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.23
+  version: 1.0.24
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -633,32 +633,6 @@ paths:
               examples:
                 SuccessfulAsyncResponse:
                   $ref: "#/components/examples/SuccessfulAsyncResponse"
-  /event_manager/event/redrive:
-    post:
-      tags:
-        - Event
-      summary: Redrive Event
-      operationId: redriveEvent
-      requestBody:
-        description: The event to redrive
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/RedriveEventRequest"
-            examples:
-              RedriveEventRequest:
-                $ref: "#/components/examples/RedriveEventRequest"
-      responses:
-        202:
-          description: Request accepted
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AsyncResponse'
-              examples:
-                SuccessfulAsyncResponse:
-                  $ref: "#/components/examples/SuccessfulAsyncResponse"
   /event_manager/event_entity:
     patch:
       tags:
@@ -1037,6 +1011,8 @@ components:
         job_id:
           type: string
           example: '60e5b1b405b1e2db6ebd3bee'
+        payload_in:
+          $ref: '#/components/schemas/PayloadIn'
     JobList:
       type: array
       items:
@@ -1278,35 +1254,17 @@ components:
       type: object
       required:
         - original_event_id
-        - job_id
       properties:
-        job_id:
-          type: string
-          format: uuid
-          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
         original_event_id:
           type: string
           example: '60e5b1b405b1e2db6ebd3bee'
         payload_in:
           $ref: '#/components/schemas/PayloadIn'
-    RedriveEventRequest:
-      type: object
-      required:
-        - event_id
-      properties:
-        event_id:
-          type: string
-          example: '60e5b1b405b1e2db6ebd3bee'
     ReplicateParentAggregateEventRequest:
       type: object
       required:
         - original_event_id
-        - job_id
       properties:
-        job_id:
-          type: string
-          format: uuid
-          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
         original_event_id:
           type: string
           example: '60e5b1b405b1e2db6ebd3bee'

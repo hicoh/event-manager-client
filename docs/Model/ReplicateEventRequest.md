@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jobId** | **string** |  |
 **originalEventId** | **string** |  |
 **payloadIn** | **object** |  | [optional]
 
