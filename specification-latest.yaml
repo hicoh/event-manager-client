@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.24
+  version: 1.0.25
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -249,6 +249,13 @@ paths:
         - Webhook
       summary: Replicate Static Webhook
       operationId: replicateStaticWebhook
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         description: Job Data
         required: true
@@ -273,6 +280,13 @@ paths:
         - Webhook
       summary: Replicate Dynamic Webhook
       operationId: replicateDynamicWebhook
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         description: Job Data
         required: true
