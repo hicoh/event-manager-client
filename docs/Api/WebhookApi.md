@@ -149,11 +149,17 @@ Replicate Dynamic Webhook
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
+
 
 $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $replicateWebhook = new \HiCo\EventManagerClient\Model\ReplicateWebhook(); // \HiCo\EventManagerClient\Model\ReplicateWebhook | Job Data
 $organisationId = 'organisationId_example'; // string
@@ -179,7 +185,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[apikey](../../README.md#apikey)
 
 ### HTTP request headers
 
@@ -205,11 +211,17 @@ Replicate Static Webhook
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
+
 
 $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $replicateWebhook = new \HiCo\EventManagerClient\Model\ReplicateWebhook(); // \HiCo\EventManagerClient\Model\ReplicateWebhook | Job Data
 $organisationId = 'organisationId_example'; // string
@@ -235,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[apikey](../../README.md#apikey)
 
 ### HTTP request headers
 

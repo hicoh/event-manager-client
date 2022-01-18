@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.25
+  version: 1.0.26
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -244,7 +244,6 @@ paths:
                   $ref: "#/components/examples/SuccessfulAsyncResponse"
   /event_manager/job/replicate/webhook/static:
     post:
-      security: [ ]
       tags:
         - Webhook
       summary: Replicate Static Webhook
@@ -275,7 +274,6 @@ paths:
                   $ref: '#/components/examples/SuccessfulAsyncResponse'
   /event_manager/job/replicate/webhook/dynamic:
     post:
-      security: [ ]
       tags:
         - Webhook
       summary: Replicate Dynamic Webhook
