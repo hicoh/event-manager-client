@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.26
+  version: 1.0.27
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -1223,6 +1223,9 @@ components:
         message:
           type: string
           example: 'The job finished'
+        finished:
+          type: boolean
+          example: true
     ReplicateJobRequest:
       type: object
       required:
@@ -1423,6 +1426,7 @@ components:
         id: '60e5b1b405b1e2db6ebd3bee'
         status: 'FINISHED'
         message: 'The job has finished'
+        finished: true
     UpdateEventRequest:
       value:
         id: '2455b1b405b1e2db6ebd3321'
