@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `array`
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -322,7 +322,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: `array`
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

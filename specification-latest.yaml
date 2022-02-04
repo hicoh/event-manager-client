@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.28
+  version: 1.0.29
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -578,7 +578,7 @@ paths:
         description: The fields to update
         required: true
         content:
-          array:
+          application/json:
             schema:
               $ref: "#/components/schemas/UpdateEventRequest"
             examples:
@@ -611,7 +611,7 @@ paths:
         description: The parent ID and entity name identify the child event, the other fields will be updated on that event
         required: true
         content:
-          array:
+          application/json:
             schema:
               $ref: "#/components/schemas/UpdateChildEventRequest"
             examples:
