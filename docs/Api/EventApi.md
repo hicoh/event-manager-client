@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 ## `updateEvent()`
 
 ```php
-updateEvent($updateEventRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+updateEvent($updateEventRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Update Event
@@ -295,9 +295,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
     $config
 );
 $updateEventRequest = new \HiCo\EventManagerClient\Model\UpdateEventRequest(); // \HiCo\EventManagerClient\Model\UpdateEventRequest | The fields to update
+$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->updateEvent($updateEventRequest);
+    $result = $apiInstance->updateEvent($updateEventRequest, $organisationId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventApi->updateEvent: ', $e->getMessage(), PHP_EOL;
@@ -309,6 +310,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateEventRequest** | [**\HiCo\EventManagerClient\Model\UpdateEventRequest**](../Model/UpdateEventRequest.md)| The fields to update |
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
 
 ### Return type
 

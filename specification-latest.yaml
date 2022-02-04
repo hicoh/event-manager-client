@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.27
+  version: 1.0.28
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -567,6 +567,13 @@ paths:
         - Event
       summary: Update Event
       operationId: updateEvent
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         description: The fields to update
         required: true
