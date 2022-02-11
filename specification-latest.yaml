@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.29
+  version: 1.0.30
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -562,6 +562,34 @@ paths:
               examples:
                 ResourceNotFound:
                   $ref: '#/components/examples/NotFound'
+    post:
+      tags:
+        - Event
+      summary: Create a new event and send it to be transformed
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
+      requestBody:
+        description: The stream ID, Job ID and Payload for the event
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostEventRequest"
+      responses:
+        202:
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AsyncResponse'
+              examples:
+                SuccessfulAsyncResponse:
+                  $ref: "#/components/examples/SuccessfulAsyncResponse"
     patch:
       tags:
         - Event
@@ -1150,6 +1178,21 @@ components:
           type: string
           description: 'DD/MM/YYYY hh:mm:ss'
           example: '2021/03/21 12:23:22'
+    PostEventRequest:
+      type: object
+      required:
+        - stream_id
+        - job_id
+        - payload_in
+      properties:
+        stream_id:
+          type: string
+          example: '8c09b496-df2a-11eb-ba80-0242ac130004'
+        job_id:
+          type: string
+          example: '60e5b1b405b1e2db6ebd3bee'
+        payload_in:
+          $ref: '#/components/schemas/PayloadIn'
     UpdateEventRequest:
       type: object
       required:

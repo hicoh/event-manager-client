@@ -24,6 +24,7 @@ docs/Model/Job.md
 docs/Model/JobRequest.md
 docs/Model/JobScheduleRequest.md
 docs/Model/PatchSyncResponse.md
+docs/Model/PostEventRequest.md
 docs/Model/ReplicateEventRequest.md
 docs/Model/ReplicateJobRequest.md
 docs/Model/ReplicateParentAggregateEventRequest.md
@@ -53,6 +54,7 @@ src/Model/JobRequest.php
 src/Model/JobScheduleRequest.php
 src/Model/ModelInterface.php
 src/Model/PatchSyncResponse.php
+src/Model/PostEventRequest.php
 src/Model/ReplicateEventRequest.php
 src/Model/ReplicateJobRequest.php
 src/Model/ReplicateParentAggregateEventRequest.php
@@ -76,3 +78,4 @@ src/Service/KeyApi.php
 src/Service/OrganisationApi.php
 src/Service/StreamApi.php
 src/Service/WebhookApi.php
+test/Model/PostEventRequestTest.php
