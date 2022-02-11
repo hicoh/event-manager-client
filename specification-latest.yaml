@@ -566,6 +566,7 @@ paths:
       tags:
         - Event
       summary: Create a new event and send it to be transformed
+      operationId: postEvent
       parameters:
         - in: header
           name: organisation-id
