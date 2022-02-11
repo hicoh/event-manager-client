@@ -565,7 +565,7 @@ paths:
     post:
       tags:
         - Event
-      summary: Create a new event and send it to be transformed
+      summary: Create a new batch of events and send them to be transformed
       operationId: postEvent
       parameters:
         - in: header
@@ -575,7 +575,7 @@ paths:
             format: uuid
           required: false
       requestBody:
-        description: The stream ID, Job ID and Payload for the event
+        description: The stream ID, Job ID and Payload in list for the event
         required: true
         content:
           application/json:
@@ -1192,8 +1192,8 @@ components:
         job_id:
           type: string
           example: '60e5b1b405b1e2db6ebd3bee'
-        payload_in:
-          $ref: '#/components/schemas/PayloadIn'
+        payload_in_list:
+          $ref: '#/components/schemas/PayloadInList'
     UpdateEventRequest:
       type: object
       required:

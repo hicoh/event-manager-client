@@ -38,7 +38,7 @@ $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     $config
 );
 $streamId = 123e4567-e89b-12d3-a456-426614174000; // string
-$body = new \stdClass; // object | Event Data
+$body = array('key' => new \stdClass); // object | Event Data
 
 try {
     $result = $apiInstance->postDynamicWebhook($streamId, $body);
@@ -100,7 +100,7 @@ $apiInstance = new HiCo\EventManagerClient\Api\WebhookApi(
     $config
 );
 $streamId = 123e4567-e89b-12d3-a456-426614174000; // string
-$body = new \stdClass; // object | Event Data
+$body = array('key' => new \stdClass); // object | Event Data
 
 try {
     $result = $apiInstance->postStaticWebhook($streamId, $body);
@@ -177,7 +177,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **replicateWebhook** | [**\HiCo\EventManagerClient\Model\ReplicateWebhook**](../Model/ReplicateWebhook.md)| Job Data |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -239,7 +239,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **replicateWebhook** | [**\HiCo\EventManagerClient\Model\ReplicateWebhook**](../Model/ReplicateWebhook.md)| Job Data |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 

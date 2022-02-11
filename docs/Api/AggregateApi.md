@@ -115,7 +115,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
  **replicateEventRequest** | [**\HiCo\EventManagerClient\Model\ReplicateEventRequest**](../Model/ReplicateEventRequest.md)|  | [optional]
 
 ### Return type
@@ -178,7 +178,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **replicateParentAggregateEventRequest** | [**\HiCo\EventManagerClient\Model\ReplicateParentAggregateEventRequest**](../Model/ReplicateParentAggregateEventRequest.md)| Event Data |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 
