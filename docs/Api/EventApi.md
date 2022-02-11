@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getEventById()**](EventApi.md#getEventById) | **GET** /event_manager/event/{event_id} | Get an event by event id
 [**getEventsBy()**](EventApi.md#getEventsBy) | **GET** /event_manager/event | Get a list of events by
-[**postEvent()**](EventApi.md#postEvent) | **POST** /event_manager/event | Create a new event and send it to be transformed
+[**postEvent()**](EventApi.md#postEvent) | **POST** /event_manager/event | Create a new batch of events and send them to be transformed
 [**replicateEvent()**](EventApi.md#replicateEvent) | **POST** /event_manager/event/replicate | Replicate Event
 [**updateChildEvent()**](EventApi.md#updateChildEvent) | **PATCH** /event_manager/child_event | Update Child Event via the Parent Event ID and the entity name
 [**updateEvent()**](EventApi.md#updateEvent) | **PATCH** /event_manager/event | Update Event
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 postEvent($postEventRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
-Create a new event and send it to be transformed
+Create a new batch of events and send them to be transformed
 
 ### Example
 
@@ -171,7 +171,7 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventApi(
     new GuzzleHttp\Client(),
     $config
 );
-$postEventRequest = new \HiCo\EventManagerClient\Model\PostEventRequest(); // \HiCo\EventManagerClient\Model\PostEventRequest | The stream ID, Job ID and Payload for the event
+$postEventRequest = new \HiCo\EventManagerClient\Model\PostEventRequest(); // \HiCo\EventManagerClient\Model\PostEventRequest | The stream ID, Job ID and Payload in list for the event
 $organisationId = 'organisationId_example'; // string
 
 try {
@@ -186,8 +186,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **postEventRequest** | [**\HiCo\EventManagerClient\Model\PostEventRequest**](../Model/PostEventRequest.md)| The stream ID, Job ID and Payload for the event |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **postEventRequest** | [**\HiCo\EventManagerClient\Model\PostEventRequest**](../Model/PostEventRequest.md)| The stream ID, Job ID and Payload in list for the event |
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -248,7 +248,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
  **replicateEventRequest** | [**\HiCo\EventManagerClient\Model\ReplicateEventRequest**](../Model/ReplicateEventRequest.md)|  | [optional]
 
 ### Return type
@@ -311,7 +311,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateChildEventRequest** | [**\HiCo\EventManagerClient\Model\UpdateChildEventRequest**](../Model/UpdateChildEventRequest.md)| The parent ID and entity name identify the child event, the other fields will be updated on that event |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -373,7 +373,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateEventRequest** | [**\HiCo\EventManagerClient\Model\UpdateEventRequest**](../Model/UpdateEventRequest.md)| The fields to update |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 

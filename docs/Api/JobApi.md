@@ -116,7 +116,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
  **jobScheduleRequest** | [**\HiCo\EventManagerClient\Model\JobScheduleRequest**](../Model/JobScheduleRequest.md)|  | [optional]
 
 ### Return type
@@ -178,7 +178,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
  **sourceJobRequest** | [**\HiCo\EventManagerClient\Model\SourceJobRequest**](../Model/SourceJobRequest.md)|  | [optional]
 
 ### Return type
@@ -243,7 +243,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
  **id** | **string**| The job id | [optional]
  **streamId** | **string**| The stream id of the job | [optional]
  **status** | **string**| The job status | [optional]
@@ -499,7 +499,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateJobRequest** | [**\HiCo\EventManagerClient\Model\UpdateJobRequest**](../Model/UpdateJobRequest.md)| The fields to update |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 

@@ -52,7 +52,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
  **scheduleConfigurationRequest** | [**\HiCo\EventManagerClient\Model\ScheduleConfigurationRequest**](../Model/ScheduleConfigurationRequest.md)|  | [optional]
 
 ### Return type
@@ -115,7 +115,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **streamId** | **string**| Stream Id |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -177,7 +177,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **streamId** | **string**| Stream Id |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 
@@ -238,7 +238,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **organisationId** | [**string**](../Model/.md)|  | [optional]
+ **organisationId** | **string**|  | [optional]
  **scheduleConfigurationRequest** | [**\HiCo\EventManagerClient\Model\ScheduleConfigurationRequest**](../Model/ScheduleConfigurationRequest.md)|  | [optional]
 
 ### Return type
