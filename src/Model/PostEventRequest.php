@@ -1,6 +1,6 @@
 <?php
 /**
- * ReplicateJobRequest
+ * PostEventRequest
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \HiCo\EventManagerClient\ObjectSerializer;
 
 /**
- * ReplicateJobRequest Class Doc Comment
+ * PostEventRequest Class Doc Comment
  *
  * @category Class
  * @package  HiCo\EventManagerClient
@@ -43,7 +43,7 @@ use \HiCo\EventManagerClient\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class PostEventRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ReplicateJobRequest';
+    protected static $openAPIModelName = 'PostEventRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,9 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'streamId' => 'string',
         'jobId' => 'string',
-        'payloadInList' => 'object[]'
+        'payloadIn' => 'object'
     ];
 
     /**
@@ -72,8 +73,9 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'streamId' => null,
         'jobId' => null,
-        'payloadInList' => null
+        'payloadIn' => null
     ];
 
     /**
@@ -103,8 +105,9 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'streamId' => 'stream_id',
         'jobId' => 'job_id',
-        'payloadInList' => 'payload_in_list'
+        'payloadIn' => 'payload_in'
     ];
 
     /**
@@ -113,8 +116,9 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'streamId' => 'setStreamId',
         'jobId' => 'setJobId',
-        'payloadInList' => 'setPayloadInList'
+        'payloadIn' => 'setPayloadIn'
     ];
 
     /**
@@ -123,8 +127,9 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'streamId' => 'getStreamId',
         'jobId' => 'getJobId',
-        'payloadInList' => 'getPayloadInList'
+        'payloadIn' => 'getPayloadIn'
     ];
 
     /**
@@ -184,8 +189,9 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
+        $this->container['streamId'] = $data['streamId'] ?? null;
         $this->container['jobId'] = $data['jobId'] ?? null;
-        $this->container['payloadInList'] = $data['payloadInList'] ?? null;
+        $this->container['payloadIn'] = $data['payloadIn'] ?? null;
     }
 
     /**
@@ -197,8 +203,14 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['streamId'] === null) {
+            $invalidProperties[] = "'streamId' can't be null";
+        }
         if ($this->container['jobId'] === null) {
             $invalidProperties[] = "'jobId' can't be null";
+        }
+        if ($this->container['payloadIn'] === null) {
+            $invalidProperties[] = "'payloadIn' can't be null";
         }
         return $invalidProperties;
     }
@@ -214,6 +226,30 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets streamId
+     *
+     * @return string
+     */
+    public function getStreamId()
+    {
+        return $this->container['streamId'];
+    }
+
+    /**
+     * Sets streamId
+     *
+     * @param string $streamId streamId
+     *
+     * @return self
+     */
+    public function setStreamId($streamId)
+    {
+        $this->container['streamId'] = $streamId;
+
+        return $this;
+    }
 
     /**
      * Gets jobId
@@ -240,25 +276,25 @@ class ReplicateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets payloadInList
+     * Gets payloadIn
      *
-     * @return object[]|null
+     * @return object
      */
-    public function getPayloadInList()
+    public function getPayloadIn()
     {
-        return $this->container['payloadInList'];
+        return $this->container['payloadIn'];
     }
 
     /**
-     * Sets payloadInList
+     * Sets payloadIn
      *
-     * @param object[]|null $payloadInList payloadInList
+     * @param object $payloadIn payloadIn
      *
      * @return self
      */
-    public function setPayloadInList($payloadInList)
+    public function setPayloadIn($payloadIn)
     {
-        $this->container['payloadInList'] = $payloadInList;
+        $this->container['payloadIn'] = $payloadIn;
 
         return $this;
     }
