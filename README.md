@@ -88,9 +88,9 @@ Class | Method | HTTP request | Description
 *ApiKeyApi* | [**createApiKey**](docs/Api/ApiKeyApi.md#createapikey) | **POST** /event_manager/api_key | Create a new API key
 *ApiKeyApi* | [**deleteApiKey**](docs/Api/ApiKeyApi.md#deleteapikey) | **DELETE** /event_manager/api_key/{organisation_id}/{key_id} | Delete an API key
 *ApiKeyApi* | [**getAllApiKeysByOrganisation**](docs/Api/ApiKeyApi.md#getallapikeysbyorganisation) | **GET** /event_manager/api_key/all/organisation/{organisation_id} | Fetch all API keys associated with an Organisation
-*EventApi* | [**eventManagerEventPost**](docs/Api/EventApi.md#eventmanagereventpost) | **POST** /event_manager/event | Create a new event and send it to be transformed
 *EventApi* | [**getEventById**](docs/Api/EventApi.md#geteventbyid) | **GET** /event_manager/event/{event_id} | Get an event by event id
 *EventApi* | [**getEventsBy**](docs/Api/EventApi.md#geteventsby) | **GET** /event_manager/event | Get a list of events by
+*EventApi* | [**postEvent**](docs/Api/EventApi.md#postevent) | **POST** /event_manager/event | Create a new event and send it to be transformed
 *EventApi* | [**replicateEvent**](docs/Api/EventApi.md#replicateevent) | **POST** /event_manager/event/replicate | Replicate Event
 *EventApi* | [**updateChildEvent**](docs/Api/EventApi.md#updatechildevent) | **PATCH** /event_manager/child_event | Update Child Event via the Parent Event ID and the entity name
 *EventApi* | [**updateEvent**](docs/Api/EventApi.md#updateevent) | **PATCH** /event_manager/event | Update Event

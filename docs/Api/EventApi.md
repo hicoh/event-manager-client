@@ -4,75 +4,13 @@ All URIs are relative to https://api.highcohesion.com/v1.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**eventManagerEventPost()**](EventApi.md#eventManagerEventPost) | **POST** /event_manager/event | Create a new event and send it to be transformed
 [**getEventById()**](EventApi.md#getEventById) | **GET** /event_manager/event/{event_id} | Get an event by event id
 [**getEventsBy()**](EventApi.md#getEventsBy) | **GET** /event_manager/event | Get a list of events by
+[**postEvent()**](EventApi.md#postEvent) | **POST** /event_manager/event | Create a new event and send it to be transformed
 [**replicateEvent()**](EventApi.md#replicateEvent) | **POST** /event_manager/event/replicate | Replicate Event
 [**updateChildEvent()**](EventApi.md#updateChildEvent) | **PATCH** /event_manager/child_event | Update Child Event via the Parent Event ID and the entity name
 [**updateEvent()**](EventApi.md#updateEvent) | **PATCH** /event_manager/event | Update Event
 
-
-## `eventManagerEventPost()`
-
-```php
-eventManagerEventPost($postEventRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
-```
-
-Create a new event and send it to be transformed
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: apikey
-$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
-
-
-$apiInstance = new HiCo\EventManagerClient\Api\EventApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$postEventRequest = new \HiCo\EventManagerClient\Model\PostEventRequest(); // \HiCo\EventManagerClient\Model\PostEventRequest | The stream ID, Job ID and Payload for the event
-$organisationId = 'organisationId_example'; // string
-
-try {
-    $result = $apiInstance->eventManagerEventPost($postEventRequest, $organisationId);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling EventApi->eventManagerEventPost: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **postEventRequest** | [**\HiCo\EventManagerClient\Model\PostEventRequest**](../Model/PostEventRequest.md)| The stream ID, Job ID and Payload for the event |
- **organisationId** | [**string**](../Model/.md)|  | [optional]
-
-### Return type
-
-[**\HiCo\EventManagerClient\Model\AsyncResponse**](../Model/AsyncResponse.md)
-
-### Authorization
-
-[apikey](../../README.md#apikey)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `getEventById()`
 
@@ -200,6 +138,68 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postEvent()`
+
+```php
+postEvent($postEventRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
+```
+
+Create a new event and send it to be transformed
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: apikey
+$config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKey('apikey', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = HiCo\EventManagerClient\Configuration::getDefaultConfiguration()->setApiKeyPrefix('apikey', 'Bearer');
+
+
+$apiInstance = new HiCo\EventManagerClient\Api\EventApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$postEventRequest = new \HiCo\EventManagerClient\Model\PostEventRequest(); // \HiCo\EventManagerClient\Model\PostEventRequest | The stream ID, Job ID and Payload for the event
+$organisationId = 'organisationId_example'; // string
+
+try {
+    $result = $apiInstance->postEvent($postEventRequest, $organisationId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EventApi->postEvent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postEventRequest** | [**\HiCo\EventManagerClient\Model\PostEventRequest**](../Model/PostEventRequest.md)| The stream ID, Job ID and Payload for the event |
+ **organisationId** | [**string**](../Model/.md)|  | [optional]
+
+### Return type
+
+[**\HiCo\EventManagerClient\Model\AsyncResponse**](../Model/AsyncResponse.md)
+
+### Authorization
+
+[apikey](../../README.md#apikey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
