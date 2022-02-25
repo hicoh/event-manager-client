@@ -16,7 +16,7 @@ release:
 
 generate:
 	@echo "============ Api generation ============"
-	java -jar ./ops/openapi-generator-cli.jar generate -i specification-latest.yaml -g php -o . -c config.json
+	java -jar ./ops/openapi-generator-cli-5.4.0.jar generate -i specification-latest.yaml -g php -o . -c config.json
 
 build: checkout copy release generate
 	@echo "============ Release building  ============"
