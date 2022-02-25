@@ -18,14 +18,14 @@ generate:
 	@echo "============ Api generation ============"
 	java -jar ./ops/openapi-generator-cli.jar generate -i specification-latest.yaml -g php -o . -c config.json
 
-tag:
-	@echo "============ Tag creation ============"
-	git tag -a "v$(PACKAGE_VERSION)" -m "Release v$(PACKAGE_VERSION)"
-
 build: checkout copy release generate
 	@echo "============ Release building  ============"
 	git add .
 	git commit -m "Release v$(PACKAGE_VERSION)"
+
+tag:
+	@echo "============ Tag creation ============"
+	git tag -a "v$(PACKAGE_VERSION)" -m "Release v$(PACKAGE_VERSION)"
 
 version: build tag
 	@echo "============ Push version to origin ============"

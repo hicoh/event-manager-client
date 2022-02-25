@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.30
+  version: 1.0.31
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -687,6 +687,13 @@ paths:
         - EventEntity
       summary: Update Event Entity
       operationId: updateEventEntity
+      parameters:
+        - in: header
+          name: organisation-id
+          schema:
+            type: string
+            format: uuid
+          required: false
       requestBody:
         description: The fields to update
         required: true
@@ -703,7 +710,7 @@ paths:
                 $ref: '#/components/schemas/AsyncResponse'
               examples:
                 SuccessfulAsyncResponse:
-                  $ref: "#/components/examples/SuccessfulAsyncResponse"
+                  $ref: "#/components/examples/SuccessfulAsyncResponseWithoutId"
   /event_manager/webhook/static/{stream_id}:
     post:
       tags:

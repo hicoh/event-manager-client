@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `updateEventEntity()`
 
 ```php
-updateEventEntity($updateEventEntityRequest): \HiCo\EventManagerClient\Model\AsyncResponse
+updateEventEntity($updateEventEntityRequest, $organisationId): \HiCo\EventManagerClient\Model\AsyncResponse
 ```
 
 Update Event Entity
@@ -35,9 +35,10 @@ $apiInstance = new HiCo\EventManagerClient\Api\EventEntityApi(
     $config
 );
 $updateEventEntityRequest = new \HiCo\EventManagerClient\Model\UpdateEventEntityRequest(); // \HiCo\EventManagerClient\Model\UpdateEventEntityRequest | The fields to update
+$organisationId = 'organisationId_example'; // string
 
 try {
-    $result = $apiInstance->updateEventEntity($updateEventEntityRequest);
+    $result = $apiInstance->updateEventEntity($updateEventEntityRequest, $organisationId);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EventEntityApi->updateEventEntity: ', $e->getMessage(), PHP_EOL;
@@ -49,6 +50,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **updateEventEntityRequest** | [**\HiCo\EventManagerClient\Model\UpdateEventEntityRequest**](../Model/UpdateEventEntityRequest.md)| The fields to update |
+ **organisationId** | **string**|  | [optional]
 
 ### Return type
 
