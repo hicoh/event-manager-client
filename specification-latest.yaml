@@ -3,7 +3,7 @@ info:
   description: |
     HighCohesion API
     [https://highcohesion.co.uk](https://highcohesion.co.uk)
-  version: 1.0.31
+  version: 1.0.32
   title: HighCohesion API
   termsOfService: 'https://highcohesion.co.uk'
   contact:
@@ -1269,12 +1269,16 @@ components:
       type: object
       required:
         - id
+        - stream_id
         - status
         - message
       properties:
         id:
           type: string
           example: '60e5b1b405b1e2db6ebd3bee'
+        stream_id:
+          type: string
+          example: '9b8ed6d0-e0b1-11eb-a3e5-8311fab11111'
         status:
           type: string
           example: 'FINISHED'
@@ -1482,6 +1486,7 @@ components:
     UpdateStatusRequest:
       value:
         id: '60e5b1b405b1e2db6ebd3bee'
+        stream_id: '9b8ed6d0-e0b1-11eb-a3e5-8311fab11111'
         status: 'FINISHED'
         message: 'The job has finished'
         finished: true

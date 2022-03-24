@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  |
+**streamId** | **string** |  |
 **status** | **string** |  |
 **message** | **string** |  |
 **finished** | **bool** |  | [optional]
